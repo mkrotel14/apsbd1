@@ -1,4 +1,3 @@
-# apsbd1
-APS de Banco de Dados 1
-Sistema WEB simples que contém integração com banco de dados.
-Utilização do BootsTrap e Python para a realização desse projeto, e integração com MySQL
+# APS de Banco de Dados 1
+Realização de um projeto da matéria de banco de dados 1.
+Objetivo: Criação de um sistema WEB utilizando qualquer linguagem, tendo que ter integração com banco de dados.
