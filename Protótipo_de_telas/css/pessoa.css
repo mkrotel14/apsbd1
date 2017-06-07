@@ -1,0 +1,18 @@
+.nav-sel{
+	height:30px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+iframe { 
+    width:1900px; 
+    height: 100%;
+    border: black;
+}
+button{
+	float:left;
+    margin: 0 25px 0 25px;
+}
+a{ 
+    text-decoration:none;
+    color: black;
+}
