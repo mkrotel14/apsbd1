@@ -7,47 +7,56 @@
     </head>
     
     <body>
-        <form name="Funcionario" action="cadastrando.php" method="POST">
-            Funcionario
-            <input type="radio" name="sel" value="funcionario">
-            Cliente
-            <input type="radio" name="sel" value="cliente"><br><br>
-            Nome:
-            <input type="text" name="nome" size="75" />
-            RG:
-            <input type="text" name="rg" size="20" />
-            CPF:
-            <input type="text" name="cpf" size="20" />
-            Data de Nascimento:
-            <input type="text" name="data_nasc" size="20" /><br><br>
-            Cidade:
-            <select name="cidades">
-                <option value="">      </option>
-            </select>
-            Estado:
-            <select name="estados">
-                <option value="">      </option>
-            </select> 
-            <h3>Contato</h3>          
-            Telefone:
-            <input type="text" name="telefone" size="20">
-            E-mail:
-            <input type="text" name="email" size="30"><br>
-            <h3>Funcionário</h3>
-            Função:
-            <input type="text" name="funcao" size="50" />
-            Data de Admissao:
-            <input type="text" name="data_admissao" size="20" />
-            Salário:
-            <input type="text" name="salario" size="20" />
-            Status:
-            <input type="text" name="status" size="20" /><br><br>
-            Login:
-            <input type="text" name="login" size="25"/>
-            Senha:
-            <input type="password" name="senha" size="25"/><br><br>
-            <input type="submit" value="Cadastrar"/>
-            <input type="reset" value="Limpar"/>
+        <form id="pessoa" name="Pessoa" action="cadastrando.php" method="POST">
+            <div>
+                Cliente
+                <input type="radio" name="radio1" value="cliente"/>
+                Funcionário
+                <input type="radio" name="radio1" value="funcionario" /><br><br>
+                Nome:
+                <input type="text" name="nome" disabled="true" size="75" />
+                RG:
+                <input type="text" name="rg" disabled="true" size="20" />
+                CPF:
+                <input type="text" name="cpf" disabled="true" size="20" />
+                Data de Nascimento:
+                <input type="text" name="data_nasc" disabled="true" size="20" /><br><br>
+                Rua:
+                <input type="text" name="rua" disabled="true" size="75" />
+                CEP:
+                <input type="text" name="cep" disabled="true" size="20" />
+                Bairro:
+                <input type="text" name="bairro" disabled="true" size="20" /><br><br>
+                Cidade:
+                <select name="cidade" disabled="true">
+                    <option value=""></option>
+                </select>
+                Estado:
+                <select name="estado" disabled="true">
+                    <option value=""></option>
+                </select> 
+                <h3>Contato</h3>          
+                Telefone:
+                <input type="text" name="telefone" disabled="true" size="20" />
+                E-mail:
+                <input type="text" name="email" disabled="true" size="30" /><br>
+                <h3>Funcionário</h3>
+                Função:
+                <input type="text" name="funcao" disabled="true" size="50" />
+                Data de Admissao:
+                <input type="text" name="data_admsc" disabled="true" size="20" />
+                Salário:
+                <input type="text" name="salario" disabled="true" size="20" />
+                Status:
+                <input type="text" name="status" disabled="true" size="20" /><br><br>
+                Login:
+                <input type="text" name="login" disabled="true" size="25" />
+                Senha:
+                <input type="password" name="senha" disabled="true" size="25" /><br><br>
+                <input type="submit" value="Cadastrar"/>
+                <input type="reset" value="Limpar"/>
+            </div>
         </form>
+        <script src="js/radio.js"></script>
     </body>
 </html>

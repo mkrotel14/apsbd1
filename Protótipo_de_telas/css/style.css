@@ -12,13 +12,6 @@ a{
     font-family: 'Poiret One', cursive; 
     font-size:20px; 
 }
-ul { 
-    list-style:none; 
-}
-ul li {
-    float:left;
-    margin: 0 25px 0 25px;
-}
 ul li a:hover {
     color: antiquewhite; 
 }
@@ -29,3 +22,47 @@ ul li a:hover {
     padding-top: 5px;
     padding-bottom: 10px;
 }
+
+textarea {
+  max-width: 340px;
+  max-height: 80px;
+  width: 340px;
+  height: 80px;
+}
+
+nav ul ul{
+    display: none;
+}
+nav ul li:hover > ul{
+    display: block;
+}
+
+nav ul{
+    list-style: none;
+    position: relative;
+    display: inline-table;
+}
+
+nav ul:after{
+    content: ""; clear: both; display: block;
+}
+nav ul li{
+    float: left;
+    margin: 0 25px 0 25px;
+}
+nav ul ul {
+    background: #5f6975; border-radius: 0px; padding: 0;
+    position: absolute; top: 100%;
+}
+nav ul ul li {
+    float: none; 
+    border-top: 1px solid #6b727c;
+    border-bottom: 1px solid #575f6a; position: relative;
+}
+nav ul ul li a {
+
+    color: #fff;
+}   
+
+
+
