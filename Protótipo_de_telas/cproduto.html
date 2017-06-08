@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Cadastro de Produto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form name="Produto" action="cadproduto.php" method="POST">
+            Nome do Produto:
+            <input type="text" name="nome_produto" size="60" />
+            Categoria Produto:
+            <select name="categoria">
+                <option></option>
+            </select><br><br>
+            Lote:
+            <input type="text" name="lote" size="15" />
+            Qtd. Estoque:
+            <input type="text" name="qtd_estoque" size="10"><br><br>
+            Valor da Compra:
+            <input type="text" name="vvenda" size="15">
+            Valor da Venda:
+            <input type="text" name="vconpra" size="15"><br><br>
+            <input type="submit" value="Cadastrar Produto">
+            <input type="reset" value="Limpar Dados">
+        </form>
+    </body>
+</html>

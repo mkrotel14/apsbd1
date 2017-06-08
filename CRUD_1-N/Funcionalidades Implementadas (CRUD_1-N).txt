@@ -1,5 +1,5 @@
 Implementado a Funcionalidade de:
 
-Cadastro de Pessoa Estado;
-Cadastro de Cidade;
-Cadastro de Logradouro (O cadastro de Logradouro é feito junto com o cadastro de Pessoa, por isso, primeiro deve cadastrar um Estado, uma Cidade para depois fazer o Cadastro do Logradouro da Pessoa);
+--> Cadastro de Cidade;
+--> Cadastro de Produto;
+--> Cadastro de Pessoa Física (Funcionário);

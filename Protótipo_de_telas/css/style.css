@@ -22,14 +22,6 @@ ul li a:hover {
     padding-top: 5px;
     padding-bottom: 10px;
 }
-
-textarea {
-  max-width: 340px;
-  max-height: 80px;
-  width: 340px;
-  height: 80px;
-}
-
 nav ul ul{
     display: none;
 }

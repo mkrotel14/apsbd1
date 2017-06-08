@@ -1,8 +1,5 @@
 Implementado a Funcionalidade de:
 
-Cadastro de Pessoa Física, podendo ser:
--Funcionário;
--Cliente;
-Cadastro de pessoa Jurídica.
-
----OBS.: Nesta parte da implementação nao estará funcionando o cadastrp de: Endereço da Pessoa, ja que nao é um CRUD simples e sim um CRUD_1-N;
+--> Cadastro de Categoria de Produto;
+--> Cadastro de Estado;
+--> ;
