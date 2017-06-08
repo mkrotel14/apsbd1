@@ -28,13 +28,11 @@ nav ul ul{
 nav ul li:hover > ul{
     display: block;
 }
-
 nav ul{
     list-style: none;
     position: relative;
     display: inline-table;
 }
-
 nav ul:after{
     content: ""; clear: both; display: block;
 }
@@ -50,9 +48,9 @@ nav ul ul li {
     float: none; 
     border-top: 1px solid #6b727c;
     border-bottom: 1px solid #575f6a; position: relative;
+    margin: 5px 15px 5px 15px;
 }
 nav ul ul li a {
-
     color: #fff;
 }   
 

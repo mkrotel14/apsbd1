@@ -1,3 +1,7 @@
+<?php
+include_once ("inc/conn.php");
+?>
+
 <html>
     <head>
         <title>Cadastro de Produto</title>
@@ -10,7 +14,15 @@
             <input type="text" name="nome_produto" size="60" />
             Categoria Produto:
             <select name="categoria">
-                <option></option>
+                <option value="">Selecione</option>
+                <?php
+                $categoria = mysqli_query($link, "SELECT * FROM categoriaproduto");
+                while($row_categorias = mysqli_fetch_assoc($categoria)){ 
+                ?>
+                <option value="<?php echo $row_categorias['idcategoriaproduto']; ?>"><?php echo $row_categorias['nomecategoria']; ?>
+                </option><?php
+                }
+                ?>
             </select><br><br>
             Lote:
             <input type="text" name="lote" size="15" />

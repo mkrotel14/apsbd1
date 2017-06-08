@@ -29,11 +29,11 @@
                 <input type="text" name="bairro" disabled="true" size="20" /><br><br>
                 Cidade:
                 <select name="cidade" disabled="true">
-                    <option value=""></option>
+                    <option value="">Selecione</option>
                 </select>
                 Estado:
                 <select name="estado" disabled="true">
-                    <option value=""></option>
+                    <option value="">Selecione</option>
                 </select> 
                 <h3>Contato</h3>          
                 Telefone:
