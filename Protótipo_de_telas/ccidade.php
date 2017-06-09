@@ -16,8 +16,6 @@ include_once ("inc/conn.php");
                 <option value="">Selecione</option>
                 <?php
                 $estados = mysqli_query($link, "SELECT * FROM estado");
-                /*$estados = "SELECT * FROM estado";
-                $estados_return = mysqli_query($link, $estados);*/
                 while($row_estados = mysqli_fetch_assoc($estados)){ 
                 ?>
                 <option value="<?php echo $row_estados['idestado']; ?>"><?php echo $row_estados['nomeestado']; ?>

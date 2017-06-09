@@ -1,19 +1,25 @@
 <?php
 
-include "conn.php";
+include 'conn.php';
 
-$nome_cidade = $_POST['cidade'];
-$id_estado =  $_POST['estados'];
+$insert_cidade = $link->query("INSERT INTO cidade(nome, estado_idestado) VALUES ('{$_POST["cidade"]}','{$_POST["estados"]}')");
 
-$insert_cidade = "INSERT INTO cidade(nome, estado_idestado) VALUES ('$nome_cidade','$id_estado))";
-$resultado_estado = mysqli_query($connection, $insert_cidade);
-
-if(mysqli_affected_rows($connection) != 0){
-    echo "Cadastro realizado com Sucesso!";
+if(mysqli_affected_rows($link) != 0){
+    echo " 
+        <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/ccidade.php'>
+        <script type=\"text/javascript\">
+            alert(\"Cadastro realizado com sucesso!\");
+        </script>
+    ";
 }
 else{
-    echo "Erro ao Cadastrar!";
+    echo " 
+        <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/ccidade.php'>
+        <script type=\"text/javascript\">
+            alert(\"Erro ao Cadastrar!\");
+        </script>
+    ";
 }
-
+mysqli_close($link);
 ?>
 
