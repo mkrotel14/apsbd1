@@ -19,12 +19,20 @@ if(isset($_POST["acao"])){
         inserirCategoria();
     } 
     
+    if($_POST["acao"]=="inserirSecao"){
+        inserirSecao();
+    }
+    
     if($_POST["acao"]=="alterarEstado"){
         updateEstado();
     }
-    
+       
     if($_POST["acao"]=="alterarCategoria"){
         updateCategoria();
+    }
+    
+    if($_POST["acao"]=="alterarSecao"){
+        updateSecao();
     }
     
     if($_POST["acao"]=="excluirEstado"){
@@ -32,6 +40,10 @@ if(isset($_POST["acao"])){
     }
     if($_POST["acao"]=="excluirCategoria"){
         dropCategoria();
+    }
+    
+    if($_POST["acao"]=="excluirSecao"){
+        dropSecao();
     }
 }
 //-----------Conectar com o DataBase-----------//
@@ -102,7 +114,7 @@ function inserirCategoria(){
         echo " 
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/ccategoria.php'>
             <script type=\"text/javascript\">
-                alert(\"Cadastro realizado com sucesso!\");
+                alert(\"Categoria Cadastrada com sucesso!\");
             </script>
         ";
     }
@@ -110,7 +122,7 @@ function inserirCategoria(){
         echo " 
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/ccategoria.php'>
             <script type=\"text/javascript\">
-                alert(\"Erro ao Cadastrar!\");
+                alert(\"Erro ao Cadastrar uma Categoria!\");
             </script>
         ";
     }
@@ -118,14 +130,14 @@ function inserirCategoria(){
 }
 function inserirProduto(){
     $banco = abrirBanco();
-    $sql = "INSERT INTO produto(nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto) VALUES ('{$_POST["nome_produto"]}','{$_POST["lote"]}','{$_POST["vvenda"]}','{$_POST["vcompra"]}','{$_POST["qtd_estoque"]}','{$_POST["categoria"]}')";
+    $sql = "INSERT INTO produto(nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES ('{$_POST["nome_produto"]}','{$_POST["lote"]}','{$_POST["vvenda"]}','{$_POST["vcompra"]}','{$_POST["qtd_estoque"]}','{$_POST["categoria"]}','{$_POST["secao"]}')";
     $banco->query($sql);
     
     if(mysqli_affected_rows($banco) != 0){
         echo " 
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/cproduto.php'>
             <script type=\"text/javascript\">
-                alert(\"Cadastro realizado com sucesso!\");
+                alert(\"Produto Cadastrado com sucesso!\");
             </script>
         ";
     }
@@ -133,18 +145,55 @@ function inserirProduto(){
         echo " 
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/cproduto.php'>
             <script type=\"text/javascript\">
-                alert(\"Erro ao Cadastrar!\");
+                alert(\"Erro ao Cadastrar um Produto!\");
             </script>
         ";
     
     }
     $banco->close();
 }
+
+function inserirSecao(){
+    $banco = abrirBanco();
+    $sql = "INSERT INTO localproduto(secaoproduto) VALUES ('{$_POST["secao_produto"]}')";
+    $banco->query($sql);
+    
+    if(mysqli_affected_rows($banco) != 0){
+        echo " 
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/csecao.php'>
+            <script type=\"text/javascript\">
+                alert(\"Seção Cadastrada com sucesso!\");
+            </script>
+        ";
+    }
+    else{
+        echo " 
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/csecao.php'>
+            <script type=\"text/javascript\">
+                alert(\"Erro ao Cadastrar uma Seção!\");
+            </script>
+        ";
+    
+    }
+    $banco->close();    
+}
 //-----------SELECT-----------//
 
 function selectAllProduto(){
     $banco = abrirBanco();
     $sql = "SELECT * FROM produto ORDER BY nomeproduto";
+    $resultado = $banco->query($sql);
+    $banco->close();
+    
+    while($row_lista = $resultado->fetch_array()){
+        $array[] = $row_lista;
+    }
+    return $array;
+}
+
+function selectAllSecao(){
+    $banco = abrirBanco();
+    $sql = "SELECT * FROM localproduto ORDER BY secaoproduto";
     $resultado = $banco->query($sql);
     $banco->close();
     
@@ -194,6 +243,15 @@ function selectIdCategoria($idcategoriaproduto){
     
     return mysqli_fetch_assoc($resultado);
 }
+function selectIdSecao($idlocalproduto){
+    $banco = abrirBanco();
+    $sql = "SELECT * FROM localproduto WHERE idlocalproduto = '{$idlocalproduto}'" ;
+    $resultado = $banco->query($sql);
+    $banco->close();
+    
+    return mysqli_fetch_assoc($resultado);
+}
+
 //-----------UPDATE-----------//
 
 function updateEstado(){
@@ -205,7 +263,7 @@ function updateEstado(){
         echo " 
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selEstado.php'>
             <script type=\"text/javascript\">
-                alert(\"Dado Atualizado com sucesso!\");
+                alert(\"Estado Atualizado com sucesso!\");
             </script>
         ";
     }
@@ -213,7 +271,7 @@ function updateEstado(){
         echo " 
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selEstado.php'>
             <script type=\"text/javascript\">
-                alert(\"Erro ao Atualizar!\");
+                alert(\"Erro ao Atualizar um Estado!\");
             </script>
         ";
     }
@@ -228,7 +286,7 @@ function updateCategoria(){
         echo " 
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selCategoria.php'>
             <script type=\"text/javascript\">
-                alert(\"Dado Atualizado com sucesso!\");
+                alert(\"Categoria Atualizada com sucesso!\");
             </script>
         ";
     }
@@ -236,7 +294,30 @@ function updateCategoria(){
         echo " 
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selCategoria.php'>
             <script type=\"text/javascript\">
-                alert(\"Erro ao Atualizar!\");
+                alert(\"Erro ao Atualizar uma Categoria!\");
+            </script>
+        ";
+    }
+    $banco->close();
+}
+function updateSecao(){
+    $banco = abrirBanco();
+    $sql = "UPDATE localproduto SET secaoproduto='{$_POST["secaoproduto"]}";
+    $banco->query($sql);
+
+    if(mysqli_affected_rows($banco) != 0){
+        echo " 
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selCategoria.php'>
+            <script type=\"text/javascript\">
+                alert(\"Seção Atualizada com sucesso!\");
+            </script>
+        ";
+    }
+    else{
+        echo " 
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selCategoria.php'>
+            <script type=\"text/javascript\">
+                alert(\"Erro ao Atualizar uma Seção!\");
             </script>
         ";
     }
@@ -254,7 +335,7 @@ function dropEstado(){
         echo " 
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selEstado.php'>
             <script type=\"text/javascript\">
-                alert(\"Dado Excluido com sucesso!\");
+                alert(\"Estado Excluido com sucesso!\");
             </script>
         ";
     }
@@ -262,7 +343,7 @@ function dropEstado(){
         echo " 
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selEstado.php'>
             <script type=\"text/javascript\">
-                alert(\"Erro ao Excluir!\");
+                alert(\"Erro: Estado sendo utilizada em alguma Cidade!\");
             </script>
         ";
     }
@@ -286,7 +367,30 @@ function dropCategoria(){
         echo " 
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selCategoria.php'>
             <script type=\"text/javascript\">
-                alert(\"Erro: Categoria sendo utilizada em algum Produto\");
+                alert(\"Erro: Categoria sendo utilizada em algum Produto!\");
+            </script>
+        ";
+    }
+    $banco->close();
+}
+function dropSecao(){
+    $banco = abrirBanco();
+    $sql = "DELETE FROM localproduto WHERE idlocalproduto='{$_POST["idlocalproduto"]}'"; 
+    $banco->query($sql);
+
+    if(mysqli_affected_rows($banco) != 0){
+        echo " 
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selSecao.php'>
+            <script type=\"text/javascript\">
+                alert(\"Seção Excluida com sucesso!\");
+            </script>
+        ";
+    }
+    else{
+        echo " 
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selSecao.php'>
+            <script type=\"text/javascript\">
+                alert(\"Erro: Seção sendo utilizada em algum Produto!\");
             </script>
         ";
     }

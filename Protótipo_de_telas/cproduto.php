@@ -15,7 +15,7 @@
             <input type="text" name="nome_produto" size="60" />
             Categoria Produto:
             <select name="categoria">
-                <option value="">Selecione</option>
+                <option value="">Selecione a Categoria</option>
                 <?php
                 $sql = "SELECT * FROM categoriaproduto";
                 $categoria = $banco->query($sql);
@@ -25,11 +25,24 @@
                 </option><?php
                 }
                 ?>
+            </select>
+            Seção do Produto:
+            <select name="secao">
+                <option value="">Selecione a Seção</option>
+                <?php
+                $sql = "SELECT * FROM localproduto";
+                $local = $banco->query($sql);
+                while($row_local = $local->fetch_array()){ 
+                ?>
+                <option value="<?=$row_local['idlocalproduto']?>"><?=$row_local['secaoproduto']?>
+                </option><?php
+                }
+                ?>
             </select><br><br>
             Lote:
             <input type="text" name="lote" size="15" />
             Qtd. Estoque:
-            <input type="text" name="qtd_estoque" size="10"><br><br>
+            <input type="text" name="qtd_estoque" size="10">
             Valor da Compra:
             <input type="text" name="vcompra" size="15">
             Valor da Venda:

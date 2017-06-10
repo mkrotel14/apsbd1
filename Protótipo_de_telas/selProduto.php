@@ -1,6 +1,6 @@
 <?php
     include 'inc/funcoes.php';
-    $array = selectAllProduto();
+    $array_categoria = selectAllProduto();
 ?>
 
 <html>
@@ -20,14 +20,15 @@
                         <th>Valor da Compra</th>
                         <th>Qtd. Estoque</th>
                         <th>Categoria</th>
+                        <th>Seção</th>
                         <th>Editar</th>
                         <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    foreach ($array as $produto) {?>
-
+                        foreach ($array_categoria as $produto) { 
+                    ?>
                     <tr>
                         <td><?=$produto["nomeproduto"]?></td>
                         <td><?=$produto["lote"]?></td>
@@ -35,6 +36,7 @@
                         <td><?=$produto["valorcompra"]?></td>
                         <td><?=$produto["qtdestoque"]?></td>
                         <td><?=$produto["categoriaproduto_idcategoriaproduto"]?></td>
+                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
                         <td>Editar</td>
                         <td>Excluir</td>
                     </tr>
@@ -43,7 +45,7 @@
                         }
                     ?>
         </table>
-        <form name="voltar" action="cestado.php" method="POST"><br>
+        <form name="voltar" action="cproduto.php" method="POST"><br>
             <input type="submit" value="Voltar"/>
         </form>
     </body>

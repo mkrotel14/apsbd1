@@ -20,10 +20,19 @@
                                     <li><a href="cpjuridica.php" target="Frame">Jurídica</a></li>
                                 </ul>
                             </li>
-                            <li><a href="ccategoria.php" target="Frame">Gerenciar Categoria de produto</a></li>
-                            <li><a href="cproduto.php" target="Frame">Gerenciar Produto</a></li>
-                            <li><a href="cestado.php" target="Frame">Gerenciar Estado</a></li>
-                            <li><a href="ccidade.php" target="Frame">Gerenciar Cidade</a></li>
+                            <li><a href="#">Gerenciar Produto</a>
+                                <ul>
+                                    <li><a href="ccategoria.php" target="Frame">Categoria</a></li>
+                                    <li><a href="csecao.php" target="Frame">Seção</a></li>
+                                    <li><a href="cproduto.php" target="Frame">Produto</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Gerenciar Endereço</a>
+                                <ul>
+                                    <li><a href="cestado.php" target="Frame">Estado</a></li>
+                                    <li><a href="ccidade.php" target="Frame">Cidade</a></li>                                    
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li><a href="#">Relatórios</a>

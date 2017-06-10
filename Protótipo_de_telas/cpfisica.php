@@ -4,7 +4,7 @@
 ?>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/cadastro.css">
+        <link rel="stylesheet" type="text/css" href="css/pessoa.css">
         <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastro de Pessoa</title>
@@ -75,24 +75,6 @@
         <script type="text/javascript">
             google.load("jquery", "1.4.2");
         </script>
-        <script type="text/javascript">
-            $(function(){
-                $('$id_estado').change(function(){
-                    if( $(this).val() ){
-                        $('#id_cidade').hide();
-                        $.getJSON('inc/sub_categoria_cidade.php?search=',{id_estado: $(this).val(), ajax: 'true'}, function(j){
-                            var options = '<option value="">Selecione a cidade</option>';
-                            for(var i=0 ; i<j.length ; i++){
-                                options += '<option value="' + j[i].idcidade + '">' + j[i].nomecidade + '</option>';
-                            }
-                            $('#id_cidade').html(options).show();
-                        });
-                    }
-                    else{
-                        $('id_cidade').html('option value="">- Selecione a cidade -</option>');            
-                    }
-                });
-            });        
-        </script>
+        <script type="text/javascript" src="js/sub_categoria.js"></script>
     </body>
 </html>

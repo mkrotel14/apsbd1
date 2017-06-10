@@ -1,5 +1,5 @@
 .nav-sel{
-	height:30px;
+    height:30px;
     padding-top: 5px;
     padding-bottom: 10px;
 }
@@ -8,9 +8,7 @@ iframe {
     height: 100%;
     border: black;
 }
-button{
-    margin: 0 25px 0 25px;
-}
+
 a{ 
     text-decoration:none;
     color: black;

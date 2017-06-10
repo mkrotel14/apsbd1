@@ -9,7 +9,7 @@ $banco = abrirBanco();
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form name="Cidade" action="inc/funcoes.php" method="POST">
+        <form name="Cidade" action="inc/funcoes.php" method="POST" onsubmit="return validaCidade()">
             Nome da Cidade:
             <input type="text" name="nomecidade" size="30" />
             UF:
@@ -29,6 +29,7 @@ $banco = abrirBanco();
             <input type="submit" value="Cadastrar Cidade">
             <input type="reset" value="Limpar Dados">
         </form>
+        <script src="js/campo_obrigatorio.js"></script>
     </body>
 </html>
 			

@@ -4,7 +4,6 @@
 <html>
     <head>
         <title>Cadastro de Categoria</title>
-        <link rel="stylesheet" type="text/css" href="css/corpo.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -21,7 +20,7 @@
         <form name="acao" action="selCategoria.php" method="POST">
             <input type="submit" value="Buscar Categorias"/>
         </form> 
+        <script src="js/campo_obrigatorio.js"></script>
     </body>
-    <script src="js/campo_obrigatorio.js"></script>
 </html>
 			

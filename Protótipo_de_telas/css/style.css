@@ -21,8 +21,31 @@ ul li a:hover {
     height:70px;
     padding-bottom: 10px;
 }
+h1{ 
+    padding: 0 100px 0 0;
+    text-align: center;
+    text-decoration:none;
+    color: black;
+    font-family: 'Poiret One', cursive; 
+    font-size:50px; 
+}
+h3{
+	font-family: 'Poiret One', cursive;
+	color: red;
+}
+textarea {
+  max-width: 340px;
+  max-height: 80px;
+  width: 340px;
+  height: 80px;
+}
 nav {
     margin: 0 auto;
+}
+.nav-sel{
+    height:30px;
+    padding-top: 5px;
+    padding-bottom: 10px;
 }
 nav ul{
     list-style: none;
@@ -56,7 +79,7 @@ nav ul ul{
 }
 nav ul ul {
     background: #5f6975; border-radius: 0px; padding: 0;
-    position: absolute; top: 100%;
+    position: relative; top: 100%;
 }
 nav ul ul li {
     float: none; 
