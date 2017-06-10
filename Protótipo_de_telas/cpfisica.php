@@ -1,3 +1,7 @@
+<?php
+    include 'inc/funcoes.php';
+    $banco = abrirBanco();
+?>
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/cadastro.css">
@@ -27,14 +31,23 @@
                 <input type="text" name="cep" disabled="true" size="20" />
                 Bairro:
                 <input type="text" name="bairro" disabled="true" size="20" /><br><br>
-                Cidade:
-                <select name="cidade" disabled="true">
-                    <option value="">Selecione</option>
-                </select>
                 Estado:
-                <select name="estado" disabled="true">
-                    <option value="">Selecione</option>
+                <select name="estado" id="id_estado" disabled="true">
+                    <option value="">Selecione o Estado</option>
+                    <?php
+                        $sql = "SELECT * FROM estado ORDER BY nomeestado";
+                        $resultado = $banco->query($sql);
+                        while($row_categ = mysqli_fetch_assoc($resultado)){ 
+                    ?>
+                    <option value="<?=$row_categ['idestado']?>"><?=$row_categ['nomeestado']?></option>
+                    <?php
+                        }
+                    ?>  
                 </select> 
+                Cidade:
+                <select name="cidade" id="id_cidade" disabled="true">
+                    <option value="">Selecione a Cidade</option>
+                </select>
                 <h3>Contato</h3>          
                 Telefone:
                 <input type="text" name="telefone" disabled="true" size="20" />
@@ -58,5 +71,28 @@
             </div>
         </form>
         <script src="js/radio.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load("jquery", "1.4.2");
+        </script>
+        <script type="text/javascript">
+            $(function(){
+                $('$id_estado').change(function(){
+                    if( $(this).val() ){
+                        $('#id_cidade').hide();
+                        $.getJSON('inc/sub_categoria_cidade.php?search=',{id_estado: $(this).val(), ajax: 'true'}, function(j){
+                            var options = '<option value="">Selecione a cidade</option>';
+                            for(var i=0 ; i<j.length ; i++){
+                                options += '<option value="' + j[i].idcidade + '">' + j[i].nomecidade + '</option>';
+                            }
+                            $('#id_cidade').html(options).show();
+                        });
+                    }
+                    else{
+                        $('id_cidade').html('option value="">- Selecione a cidade -</option>');            
+                    }
+                });
+            });        
+        </script>
     </body>
 </html>

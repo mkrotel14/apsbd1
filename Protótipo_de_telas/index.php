@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
@@ -17,24 +12,28 @@ and open the template in the editor.
             <nav>
                 <ul>
                     <li><a href="home.php" target="Frame">Home</a></li>
-                    <li><a href="#">Cadastro Produto</a>
-                    <ul>
-                        <li><a href="ccategoria.php" target="Frame">Categoria</a></li>
-                        <li><a href="cproduto.php" target="Frame">Produto</a></li>
-                    </ul>
+                    <li><a href="#">Cadastros</a>
+                        <ul>
+                            <li><a href="#">Gerenciar Pessoas</a>
+                                <ul>
+                                    <li><a href="cpfisica.php" target="Frame">Física</a></li>
+                                    <li><a href="cpjuridica.php" target="Frame">Jurídica</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="ccategoria.php" target="Frame">Gerenciar Categoria de produto</a></li>
+                            <li><a href="cproduto.php" target="Frame">Gerenciar Produto</a></li>
+                            <li><a href="cestado.php" target="Frame">Gerenciar Estado</a></li>
+                            <li><a href="ccidade.php" target="Frame">Gerenciar Cidade</a></li>
+                        </ul>
                     </li>
-                    <li><a href="#">Cadastro Endereço</a>
-                    <ul>
-                        <li><a href="cestado.php" target="Frame">Estado</a></li>
-                        <li><a href="ccidade.php" target="Frame">Cidade</a></li>
-                    </ul>
-                    </li>
-                    <li><a href="#">Cadastro Pessoa</a>
-                    <ul>
-                        <li><a href="cpfisica.php" target="Frame">Física</a></li>
-                        <li><a href="cpjuridica.php" target="Frame">Jurídica</a></li>
-                    </ul>
-                    </li>
+                    <li><a href="#">Relatórios</a>
+                        <ul>
+                            <li><a href="#.php" target="Frame">Clientes(Física)</a></li>
+                            <li><a href="#.php" target="Frame">Clientes(Juridica)</a></li>
+                            <li><a href="#.php" target="Frame">Fornecedor</a></li>
+                            <li><a href="#.php" target="Frame">Produtos</a></li>
+                        </ul>
+                    </li>   
                 </ul>
             </nav>
         </div>
