@@ -46,6 +46,16 @@ if(isset($_POST["acao"])){
         dropSecao();
     }
 }
+
+
+
+
+
+
+
+
+
+
 //-----------Conectar com o DataBase-----------//
 
 function abrirBanco(){
@@ -55,6 +65,16 @@ function abrirBanco(){
     }
     return $connection;
 }
+
+
+
+
+
+
+
+
+
+
 //-----------INSERT-----------//
 
 function inserirCidade(){
@@ -177,6 +197,16 @@ function inserirSecao(){
     }
     $banco->close();    
 }
+
+
+
+
+
+
+
+
+
+
 //-----------SELECT-----------//
 
 function selectAllProduto(){
@@ -252,6 +282,15 @@ function selectIdSecao($idlocalproduto){
     return mysqli_fetch_assoc($resultado);
 }
 
+
+
+
+
+
+
+
+
+
 //-----------UPDATE-----------//
 
 function updateEstado(){
@@ -323,6 +362,15 @@ function updateSecao(){
     }
     $banco->close();
 }
+
+
+
+
+
+
+
+
+
 
 //-----------DROP-----------//
 
