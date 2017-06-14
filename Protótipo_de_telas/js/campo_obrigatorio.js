@@ -8,7 +8,16 @@ function validaEstado(){
    } 
    return true;
 }
-
+function validaCidade(){
+   var campoNomeC = document.getElementById("nomecidade");
+   var campoId_Estado = document.getElementById("id_estado");
+   
+   if((campoNomeC.value === "")||(campoId_Estado.value === "")){
+       alert("Campos obrigatorio Nome da Cidade ou UF não preenchidos!!");
+       return false;
+   } 
+   return true;
+}
 function validaCategoria(){
     var campoCategoria = document.getElementById("categoria");
     
