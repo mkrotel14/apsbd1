@@ -1,43 +1,43 @@
 <?php
     include 'inc/funcoes.php';
-    $array_estado = selectAllEstados();
+    $array_cidade = selectAllCidades();
 ?>
 
 <html>
     <head>
-        <title>Busca de Estados</title>
+        <title>Busca de Cidade</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h3>Lista de Estados</h3>
+        <h3>Lista de Cidades</h3>
         <table border="1">
                 <thead>
                     <tr>
-                        <th>UF</th>
-                        <th>Nome do Estado</th>
+                        <th>Nome da Cidade</th>
+                        <th>Id_Estado</th>
                         <th>Editar</th>
                         <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        foreach ($array_estado as $estado) {
+                        foreach ($array_cidade as $cidade) {
                     ?>
 
                     <tr>
-                        <td><?=$estado["uf"]?></td>
-                        <td><?=$estado["nomeestado"]?></td>
+                        <td><?=$cidade["nomecidade"]?></td>
+                        <td><?=$cidade["estado_idestado"]?></td>
                         <td>
-                            <form name="alterar" action="altEstado.php" method="POST">
-                                <input type="hidden" name="idestado" value="<?=$estado["idestado"]?>"/>
+                            <form name="alterar" action="altCidade.php" method="POST">
+                                <input type="hidden" name="idcidade" value="<?=$cidade["idcidade"]?>"/>
                                 <input type="submit" value="Editar" name="editar"/>
                             </form>
                         </td>
                         <td>
                             <form name="excluir" action="inc/funcoes.php" method="POST">
-                                <input type="hidden" name="idestado" value="<?=$estado["idestado"]?>"/>
-                                <input type="hidden" name="acao" value="excluirEstado"/>
+                                <input type="hidden" name="idcidade" value="<?=$cidade["idcidade"]?>"/>
+                                <input type="hidden" name="acao" value="excluirCidade"/>
                                 <input type="submit" value="Excluir" name="excluir"/>
                             </form>
                         </td>
@@ -47,9 +47,8 @@
                     ?>
                 </tbody>
             </table>
-        <form name="voltar" action="cestado.php" method="POST"><br>
+        <form name="voltar" action="ccidade.php" method="POST"><br>
             <input type="submit" value="Voltar"/>
         </form>
     </body>
 </html>
-

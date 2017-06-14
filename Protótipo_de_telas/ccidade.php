@@ -11,23 +11,24 @@ $banco = abrirBanco();
     <body>
         <form name="Cidade" action="inc/funcoes.php" method="POST" onsubmit="return validaCidade()">
             Nome da Cidade:
-            <input type="text" name="nomecidade" size="30" />
+            <input type="text" name="nomecidade" id="nomecidade" size="30" />
             UF:
-            <select name="estado_idestado">
-                <option value="">Selecione</option>
+            <select name="estado_idestado" id="id_estado">
+                <option value="">Selecione o Estado</option>
                 <?php
-                $sql = "SELECT * FROM estado ORDER BY nomeestado";
-                $resultado = $banco->query($sql);
-                while($row_estados = $resultado->fetch_array()){ 
-                ?>
-                <option value="<?=$row_estados['idestado']?>"><?=$row_estados['nomeestado']?></option>
-                <?php
-                }
+                    $sql = "SELECT * FROM estado ORDER BY nomeestado";
+                    $resultado_estado = $banco->query($sql);
+                    while($row_estados = mysqli_fetch_assoc($resultado_estado)){ 
+                        echo '<option value="'.$row_estados['idestado'].'">'.$row_estados['nomeestado'].'</option>';
+                    }
                 ?>
             </select><br><br>
             <input type="hidden" name="acao" value="inserirCidade"/>
             <input type="submit" value="Cadastrar Cidade">
             <input type="reset" value="Limpar Dados">
+        </form>
+        <form name="selCidade" action="selCidade.php" method="POST">
+            <input type="submit" value="Buscar Cidades"/>
         </form>
         <script src="js/campo_obrigatorio.js"></script>
     </body>

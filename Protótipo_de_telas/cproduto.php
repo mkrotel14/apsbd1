@@ -12,41 +12,37 @@
     <body>
         <form name="Produto" action="inc/funcoes.php" method="POST">
             Nome do Produto:
-            <input type="text" name="nome_produto" size="60" />
+            <input type="text" name="nomeproduto" size="60" />
+            Lote:
+            <input type="text" name="lote" size="15" /><br><br>
+            Valor da Venda:
+            <input type="text" name="valorvenda" size="15">
+            Valor da Compra:
+            <input type="text" name="valorcompra" size="15">
+            Qtd. Estoque:
+            <input type="text" name="qtdestoque" size="10"><br><br>
             Categoria Produto:
-            <select name="categoria">
+            <select name="categoriaproduto_idcategoriaproduto">
                 <option value="">Selecione a Categoria</option>
                 <?php
-                $sql = "SELECT * FROM categoriaproduto";
-                $categoria = $banco->query($sql);
-                while($row_categorias = $categoria->fetch_array()){ 
-                ?>
-                <option value="<?=$row_categorias['idcategoriaproduto']?>"><?=$row_categorias['nomecategoria']?>
-                </option><?php
-                }
-                ?>
+                    $sql = "SELECT * FROM categoriaproduto";
+                    $resultado_categoria = $banco->query($sql);
+                    while($row_categorias = mysqli_fetch_assoc($resultado_categoria)){ 
+                        echo '<option value="'.$row_categorias['idcategoriaproduto'].'">'.$row_categorias['nomecategoria'].'</option>';
+                    }    
+                ?>                
             </select>
             Seção do Produto:
-            <select name="secao">
+            <select name="localproduto_idlocalproduto">
                 <option value="">Selecione a Seção</option>
                 <?php
-                $sql = "SELECT * FROM localproduto";
-                $local = $banco->query($sql);
-                while($row_local = $local->fetch_array()){ 
-                ?>
-                <option value="<?=$row_local['idlocalproduto']?>"><?=$row_local['secaoproduto']?>
-                </option><?php
-                }
-                ?>
+                    $sql = "SELECT * FROM localproduto";
+                    $resultado_local = $banco->query($sql);
+                    while($row_local = mysqli_fetch_assoc($resultado_local)){ 
+                        echo '<option value="'.$row_local['idlocalproduto'].'">'.$row_local['secaoproduto'].'</option>';
+                    }
+                ?>             
             </select><br><br>
-            Lote:
-            <input type="text" name="lote" size="15" />
-            Qtd. Estoque:
-            <input type="text" name="qtd_estoque" size="10">
-            Valor da Compra:
-            <input type="text" name="vcompra" size="15">
-            Valor da Venda:
-            <input type="text" name="vvenda" size="15"><br><br>
             <input type="hidden" name="acao" value="inserirProduto"/>
             <input type="submit" value="Cadastrar Produto">
             <input type="reset" value="Limpar Dados">

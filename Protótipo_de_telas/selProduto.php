@@ -1,6 +1,6 @@
 <?php
     include 'inc/funcoes.php';
-    $array_categoria = selectAllProduto();
+    $array_produto = selectAllProduto();
 ?>
 
 <html>
@@ -19,15 +19,15 @@
                         <th>Valor da Venda</th>
                         <th>Valor da Compra</th>
                         <th>Qtd. Estoque</th>
-                        <th>Categoria</th>
-                        <th>Seção</th>
+                        <th>Id_Categoria</th>
+                        <th>Id_Seção</th>
                         <th>Editar</th>
                         <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        foreach ($array_categoria as $produto) { 
+                        foreach ($array_produto as $produto) { 
                     ?>
                     <tr>
                         <td><?=$produto["nomeproduto"]?></td>
@@ -37,8 +37,19 @@
                         <td><?=$produto["qtdestoque"]?></td>
                         <td><?=$produto["categoriaproduto_idcategoriaproduto"]?></td>
                         <td><?=$produto["localproduto_idlocalproduto"]?></td>
-                        <td>Editar</td>
-                        <td>Excluir</td>
+                        <td>
+                            <form name="alterar" action="altProduto.php" method="POST">
+                                <input type="hidden" name="idproduto" value="<?=$produto["idproduto"]?>"/>
+                                <input type="submit" value="Editar" name="editar"/>
+                            </form>
+                        </td>
+                        <td>
+                            <form name="excluir" action="inc/funcoes.php" method="POST">
+                                <input type="hidden" name="idproduto" value="<?=$produto["idproduto"]?>"/>
+                                <input type="hidden" name="acao" value="excluirProduto"/>
+                                <input type="submit" value="Excluir" name="excluir"/>
+                            </form>
+                        </td>
                     </tr>
                 </tbody>
                     <?php
