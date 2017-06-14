@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form name="Estado" action="inc/funcoes.php" method="POST" onsubmit="return validaSecao()">
+        <form name="Secao" action="inc/funcoes.php" method="POST" onsubmit="return validaSecao()">
             <table>
                 <tr>
                     <td>Nome da Seção(Letra - Letra)ou(Numero - Numero):</td>
@@ -21,7 +21,7 @@
                 <tbody>
                     <tr>
                         <td><input type="hidden" name="acao" value="alterarSecao"/>
-                            <input type="hidden" name="idestado" value="<?=$local["idlocalproduto"]?>"/>
+                            <input type="hidden" name="idlocalproduto" value="<?=$local["idlocalproduto"]?>"/>
                         </td>
                     </tr>
                 </tbody>

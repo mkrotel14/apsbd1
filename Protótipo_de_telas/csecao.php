@@ -10,7 +10,7 @@
     <body>
         <form name="Secao" action="inc/funcoes.php" method="POST" onsubmit="return validaSecao()">
             Nome da Seção(Letra - Letra)ou(Numero - Numero):
-            <input type="text" id="secao" name="secao_produto" size="25"/><br><br>
+            <input type="text" id="secao" name="secaoproduto" size="25"/><br><br>
             <input type="hidden" name="acao" value="inserirSecao"/>
             <input type="submit" value="Cadastrar Seção"/>
             <input type="reset" value="Limpar Dados"/>

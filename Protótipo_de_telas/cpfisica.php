@@ -11,12 +11,10 @@
     </head>
     
     <body>
-        <form id="pessoa" name="Pessoa" action="cadfisica.php" method="POST">
+        <form id="pessoa" name="Pessoa" action="inc/funcoes.php" method="POST">
             <div>
-                Cliente
-                <input type="radio" name="radio1" value="cliente"/>
-                Funcionário
-                <input type="radio" name="radio1" value="funcionario" /><br><br>
+                <input type="radio" name="radio1" value="cliente"/> Cliente                
+                <input type="radio" name="radio1" value="funcionario" /> Funcionário<br><br>
                 Nome:
                 <input type="text" name="nome" disabled="true" size="75" />
                 RG:
@@ -36,13 +34,11 @@
                     <option value="">Selecione o Estado</option>
                     <?php
                         $sql = "SELECT * FROM estado ORDER BY nomeestado";
-                        $resultado = $banco->query($sql);
-                        while($row_categ = mysqli_fetch_assoc($resultado)){ 
-                    ?>
-                    <option value="<?=$row_categ['idestado']?>"><?=$row_categ['nomeestado']?></option>
-                    <?php
+                        $resultado_estado = $banco->query($sql);
+                        while($row_estado = mysqli_fetch_assoc($resultado_estado)){
+                            echo '<option value="'.$row_estado['idestado'].'">'.$row_estado['nomeestado'].'</option>';
                         }
-                    ?>  
+                    ?>
                 </select> 
                 Cidade:
                 <select name="cidade" id="id_cidade" disabled="true">
@@ -71,10 +67,7 @@
             </div>
         </form>
         <script src="js/radio.js"></script>
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <script type="text/javascript">
-            google.load("jquery", "1.4.2");
-        </script>
-        <script type="text/javascript" src="js/sub_categoria.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="js/sub_cidade.js"></script>
     </body>
 </html>
