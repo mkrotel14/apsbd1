@@ -2,4 +2,4 @@ Implementado a Funcionalidade de:
 
 --> Cadastro de Cidade;
 --> Cadastro de Produto;
---> Cadastro de Pessoa Física (Funcionário);
+--> Cadastro de Pessoa Jurídica;
