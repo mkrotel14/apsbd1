@@ -1,3 +1,11 @@
++---------------------------------+
 # APS de Banco de Dados 1
-Realização de um projeto da matéria de banco de dados 1.
-Objetivo: Criação de um sistema WEB utilizando qualquer linguagem, tendo que ter integração com banco de dados.
++---------------------------------+
+  Realizaço de um sistema de vendas genérica de produtos de informática.
+  A construção do site foi utilizado HTML/CSS, algumas funções em JavaScript e a utilização do PHP para as funções CRUD (Create, Read, Update, Delete).
+  Para rodar o servidor, se utiliza o programa XAMPP que contém, MySQL, Apache e o Tomcat, acessando o site com o localhost/"nome_do_projeto"/index.html. A criação da conexão e do banco de dados foi feita utilizando o phpMyAdmin
+  
+ As funções de CRUD em PHP esta na pasta Protótipos de Telas/inc
+ As funções em JavaScript esta na pasta Protótipos de Telas/js
+ Os Estilos de CSS está na pasta Protótipos de Telas/css
+ As páginas com os formularios feito em HTML/CSS/PHP estao na pasta Protótipo de Telas
