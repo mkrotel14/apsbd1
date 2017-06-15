@@ -1,4 +1,3 @@
-+-------------------------------------------------------------------+
 # APS de Banco de Dados 1
 
   Realizaço de um sistema de vendas genérica de produtos de informática.
