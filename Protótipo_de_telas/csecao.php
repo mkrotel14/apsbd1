@@ -15,9 +15,6 @@
             <input type="submit" value="Cadastrar Seção"/>
             <input type="reset" value="Limpar Dados"/>
         </form>
-        <form name="acao" action="selSecao.php" method="POST">
-            <input type="submit" value="Buscar Seções"/>
-        </form> 
         <script src="js/campo_obrigatorio.js"></script>
     </body>
 </html>

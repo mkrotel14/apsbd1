@@ -1,6 +1,6 @@
 <?php
     include 'inc/funcoes.php';
-    $categoria = selectIdCategoria($_POST["idcategoriaproduto"]);
+    $categoria = selectIdCategoria($_POST['idcategoriaproduto']);
 ?>
 <html>
     <head>
@@ -26,7 +26,7 @@
                 <tbody>
                     <tr>
                         <td><input type="hidden" name="acao" value="alterarCategoria"/>
-                            <input type="hidden" name="idcategoriaproduto" value="<?=$categoria["idcategoriaproduto"]?>"/>
+                            <input type="hidden" name="idcategoriaproduto" value="<?=$categoria['idcategoriaproduto']?>"/>
                         </td>
                     </tr>
                 </tbody>

@@ -47,8 +47,5 @@
             <input type="submit" value="Cadastrar Produto">
             <input type="reset" value="Limpar Dados">
         </form>
-        <form name="selProduto" action="selProduto.php" method="POST">
-            <input type="submit" value="Buscar Produtos"/>
-        </form> 
     </body>
 </html>

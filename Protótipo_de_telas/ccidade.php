@@ -27,9 +27,6 @@ $banco = abrirBanco();
             <input type="submit" value="Cadastrar Cidade">
             <input type="reset" value="Limpar Dados">
         </form>
-        <form name="selCidade" action="selCidade.php" method="POST">
-            <input type="submit" value="Buscar Cidades"/>
-        </form>
         <script src="js/campo_obrigatorio.js"></script>
     </body>
 </html>

@@ -47,7 +47,7 @@
                     ?>
                 </tbody>
             </table>
-        <form name="voltar" action="cestado.php" method="POST"><br>
+        <form name="voltar" action="home.html" method="POST"><br>
             <input type="submit" value="Voltar"/>
         </form>
     </body>

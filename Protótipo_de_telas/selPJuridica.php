@@ -1,6 +1,6 @@
 <?php
     include 'inc/funcoes.php';
-    $array_produto = selectAllProduto();
+    $array_pessoa = selectAllPJuridica();
 ?>
 
 <html>
@@ -14,20 +14,25 @@
         <table border="1">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Lote</th>
-                        <th>Valor da Venda</th>
-                        <th>Valor da Compra</th>
-                        <th>Qtd. Estoque</th>
-                        <th>Id_Categoria</th>
-                        <th>Id_Seção</th>
+                        <th>Razão Social</th>
+                        <th>Nome Fantasia</th>
+                        <th>CNPJ</th>
+                        <th>Inscrição Estadual</th>
+                        <th>Telefone</th>
+                        <th>E-Mail</th>
+                        <th>Rua</th>
+                        <th>CEP</th>
+                        <th>Bairro</th>
+                        <th>Número</th>
+                        <th>Complemento</th>
+                        <th>Cidade</th>
                         <th>Editar</th>
                         <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                        foreach ($array_produto as $produto) { 
+                        foreach ($array_pessoa as $pessoa) { 
                     ?>
                     <tr>
                         <td><?=$produto["nomeproduto"]?></td>
@@ -36,6 +41,11 @@
                         <td><?=$produto["valorcompra"]?></td>
                         <td><?=$produto["qtdestoque"]?></td>
                         <td><?=$produto["categoriaproduto_idcategoriaproduto"]?></td>
+                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
+                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
+                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
+                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
+                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
                         <td><?=$produto["localproduto_idlocalproduto"]?></td>
                         <td>
                             <form name="alterar" action="altProduto.php" method="POST">

@@ -289,47 +289,70 @@ function inserirSecao(){
 }
 function inserirPJuridica(){
     $banco = abrirBanco();
-    $sqlP = "INSERT INTO pessoa (tipopessoa) VALUES ('Juridica')";
-    $banco->query($sqlP);
     
-    //$pessoa_idpessoa = $_GET
+//-----INSERT DE PESSOA JURIDICA-----//
+    $sql = "INSERT INTO pessoa (tipopessoa) VALUES ('Juridica')";
+    $banco->query($sql);
     
-    $sqlJ = "INSERT INTO juridica (cnpj, increstad, razaosocial, nomefantasia, pessoa_idpessoa) VALUES ('{$_POST["cnpj"]}','{$_POST["increstad"]}','{$_POST["razaosocial"]}','{$_POST["nomefantasia"]}','{$_POST[""]}'";
-    $ver = "SELECT * FROM localproduto WHERE secaoproduto = '$secaoproduto'";
-    $resultado = $banco->query($ver);
+    //Seleciona o ID da Pessoa;
+    $sql = "SELECT idpessoa FROM pessoa ORDER BY idpessoa DESC LIMIT 1";
+    $dadosP = $banco->query($sql);
+    $res_idpessoa = $dadosP->fetch_array();
     
-    if(mysqli_num_rows($resultado) > 0){
+    //Insere a Conexão entre Pessoa e Jurídica;
+    $sql = "INSERT INTO juridica (cnpj, inscrestad, razaosocial, nomefantasia, pessoa_idpessoa) VALUES ('{$_POST["cnpj"]}', '{$_POST["inscrestad"]}', '{$_POST["razaosocial"]}', '{$_POST["nomefantasia"]}', '".$res_idpessoa['idpessoa']."') ";
+    $banco->query($sql);
+    
+//-----INSERT DE CONTATO-----//
+    $sql = "INSERT INTO contato (telefone, email) VALUES ('{$_POST["telefone"]}','{$_POST["email"]}')";
+    $banco->query($sql);
+    
+    //Seleciona o ID do Contato e da Pessoa;
+    $sqlC = "SELECT idcontato FROM contato ORDER BY idcontato DESC LIMIT 1";
+    $sqlP = "SELECT idpessoa FROM pessoa ORDER BY idpessoa DESC LIMIT 1";
+    $dadosC = $banco->query($sqlC);
+    $dadosP = $banco->query($sqlP);
+    $res_idcontato = $dadosC->fetch_array();
+    $res_idpessoa = $dadosP->fetch_array();
+    
+    //Insere a Conexão entre Pessoa e Contato;
+    $sql = "INSERT INTO contatopessoa (pessoa_idpessoa, contato_idcontato) VALUES ('".$res_idpessoa['idpessoa']."','".$res_idcontato['idcontato']."')";
+    $banco->query($sql);
+    
+//-----INSERT DE ENDEREÇO-----//    
+    $sql = "INSERT INTO endereco (logradouro, cep, bairro, cidade_idcidade) VALUES ('{$_POST["logradouro"]}','{$_POST["cep"]}','{$_POST["bairro"]}','{$_POST["cidade_idcidade"]}')";
+    $banco->query($sql);
+    
+    //Seleciona o ID do Endereço da Pessoa;
+    $sqlE = "SELECT idendereco FROM endereco ORDER BY idendereco DESC LIMIT 1";
+    $sqlP = "SELECT idpessoa FROM pessoa ORDER BY idpessoa DESC LIMIT 1";
+    $dadosE = $banco->query($sqlE);
+    $dadosP = $banco->query($sqlP);
+    $res_endereco = $dadosE->fetch_array();
+    $res_idpessoa = $dadosP->fetch_array();
+    
+    //Insere a Conexão entre Pessoa e Endereço;
+    $sql = "INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUE ('".$res_endereco['idendereco']."','".$res_idpessoa['idpessoa']."','{$_POST["numero"]}','{$_POST["complemento"]}'";
+    $banco->query($sql);
+    
+    if(mysqli_affected_rows($banco) != 0){
         echo " 
-            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/cestado.php'>
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/cpjuridica.php'>
             <script type=\"text/javascript\">
-                alert(\"Dados de Seção repetidos no Sistema!\");
+                alert(\"Fornecedor Cadastrado com sucesso!\");
             </script>
         ";
     }
     else{
-        $sql = "INSERT INTO localproduto (secaoproduto) VALUES ('$secaoproduto')";
-        $banco->query($sql);
+        echo " 
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/cpjuridica.php'>
+            <script type=\"text/javascript\">
+                alert(\"Erro ao Cadastrar um Fornecedor!\");
+            </script>
+        ";
 
-        if(mysqli_affected_rows($banco) != 0){
-            echo " 
-                <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/csecao.php'>
-                <script type=\"text/javascript\">
-                    alert(\"Seção Cadastrada com sucesso!\");
-                </script>
-            ";
-        }
-        else{
-            echo " 
-                <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/csecao.php'>
-                <script type=\"text/javascript\">
-                    alert(\"Erro ao Cadastrar uma Seção!\");
-                </script>
-            ";
-
-        }  
     }
-    
-    $banco->close();    
+    $banco->close();
 }
 //---------------------------------------------//
 
@@ -400,6 +423,10 @@ function selectAllCidades(){
         $array[] = $row_lista;
     }
     return $array;
+}
+function selectAllPJuridica(){
+    $banco = abrirBanco();
+    $sql = "SELECT * FROM";
 }
 function selectIdEstado($idestado){
     $banco = abrirBanco();
@@ -504,7 +531,7 @@ function updateCidade(){
 }
 function updateCategoria(){
     $banco = abrirBanco();
-    $sql = "UPDATE categoriaproduto SET nomecategoria='{$_POST["nomecategoria"]}', descricaocategoria='{$_POST["descricaocategoria"]}' WHERE idcategoriaproduto ='{$_POST["idcategoriaproduto"]}' WHERE idcategoriaproduto = '{$_POST['idcategoriaproduto']}'";
+    $sql = "UPDATE categoriaproduto SET nomecategoria='{$_POST["nomecategoria"]}', descricaocategoria='{$_POST["descricaocategoria"]}' WHERE idcategoriaproduto ='{$_POST["idcategoriaproduto"]}'";
     $banco->query($sql);
 
     if(mysqli_affected_rows($banco) != 0){

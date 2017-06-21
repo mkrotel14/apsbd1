@@ -16,9 +16,6 @@
             <input type="hidden" name="acao" value="inserirCategoria"/>
             <input type="submit" value="Cadastrar Categoria"/>
             <input type="reset" value="Limpar Dados"/>
-        </form>
-        <form name="acao" action="selCategoria.php" method="POST">
-            <input type="submit" value="Buscar Categorias"/>
         </form> 
         <script src="js/campo_obrigatorio.js"></script>
     </body>

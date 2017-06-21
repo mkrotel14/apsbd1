@@ -30,7 +30,7 @@
                         <td><?=$categoria["descricaocategoria"]?></td>
                         <td>
                             <form name="alterar" action="altCategoria.php" method="POST">
-                                <input type="hidden" name="idcategoriaproduto" value=<?=$categoria["idcategoriaproduto"]?>/>
+                                <input type="hidden" name="idcategoriaproduto" value="<?=$categoria["idcategoriaproduto"]?>"/>
                                 <input type="submit" value="Editar" name="editar"/>
                             </form>
                         </td>
@@ -47,7 +47,7 @@
                     ?>
                 </tbody>
             </table>
-        <form name="voltar" action="ccategoria.php" method="POST"><br>
+        <form name="voltar" action="home.html" method="POST"><br>
             <input type="submit" value="Voltar"/>
         </form>
     </body>

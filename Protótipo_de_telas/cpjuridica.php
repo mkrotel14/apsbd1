@@ -11,7 +11,7 @@
     </head>
     
     <body>
-        <form name="juridico" action="cadjuridica.php" method="POST">
+        <form name="Juridica" action="inc/funcoes.php" method="POST">
             Razao Social:
             <input type="text" name="razaosocial" value="" size="75" />
             Nome Fantasia:
@@ -31,19 +31,26 @@
             CEP:
             <input type="text" name="cep" size="20" />
             Bairro:
-            <input type="text" name="bairro" size="20" /><br><br>
+            <input type="text" name="bairro" size="20" />
+            Número:
+            <input type="text" name="numero" size="10"/><br><br>
+            Complemento:
+            <input type="text" name="complemento" size="15"/>
             Cidade:
             <select name="cidade_idcidade" id="id_cidade">
                 <option value="">Selecione a Cidade</option>
+                <?php
+                    $sql = "SELECT * FROM cidade ORDER BY nomecidade";
+                    $resultado_cidade = $banco->query($sql);
+                    while($row_cidades = mysqli_fetch_assoc($resultado_cidade)){ 
+                        echo '<option value="'.$row_cidades['idcidade'].'">'.$row_cidades['nomecidade'].'</option>';
+                    }
+                ?>
             </select><br><br> 
-            <input type="hidden" name="pessoa_idpessoa"/>
             <input type="hidden" name="acao" value="inserirPJuridica"/>
             <input type="submit" value="Cadastrar Fornecedor">
             <input type="reset" value="Limpar Dados">
         </form>
-        <form name="selPJuridica" action="selPJuridica.php" method="POST">
-            <input type="submit" value="Buscar Fornecedores"/>
-        </form>>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="js/sub_cidade.js"></script>
     </body>
