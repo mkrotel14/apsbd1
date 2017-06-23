@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h3>Lista de Produtos</h3>
+        <h3>Lista de Pessoas Jurídicas</h3>
         <table border="1">
                 <thead>
                     <tr>
@@ -32,31 +32,31 @@
                 </thead>
                 <tbody>
                     <?php
-                        foreach ($array_pessoa as $pessoa) { 
+                        foreach ($array_pessoa as $PJuridica) { 
                     ?>
                     <tr>
-                        <td><?=$produto["nomeproduto"]?></td>
-                        <td><?=$produto["lote"]?></td>
-                        <td><?=$produto["valorvenda"]?></td>
-                        <td><?=$produto["valorcompra"]?></td>
-                        <td><?=$produto["qtdestoque"]?></td>
-                        <td><?=$produto["categoriaproduto_idcategoriaproduto"]?></td>
-                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
-                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
-                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
-                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
-                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
-                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
+                        <td><?=$PJuridica["razaosocial"]?></td>
+                        <td><?=$PJuridica["nomefantasia"]?></td>
+                        <td><?=$PJuridica["cnpj"]?></td>
+                        <td><?=$PJuridica["inscrestad"]?></td>
+                        <td><?=$PJuridica["telefone"]?></td>
+                        <td><?=$PJuridica["email"]?></td>
+                        <td><?=$PJuridica["logradouro"]?></td>
+                        <td><?=$PJuridica["cep"]?></td>
+                        <td><?=$PJuridica["bairro"]?></td>
+                        <td><?=$PJuridica["numero"]?></td>
+                        <td><?=$PJuridica["complemento"]?></td>
+                        <td><?=$PJuridica["nomecidade"]?></td>
                         <td>
-                            <form name="alterar" action="altProduto.php" method="POST">
-                                <input type="hidden" name="idproduto" value="<?=$produto["idproduto"]?>"/>
+                            <form name="alterar" action="altPJuridica.php" method="POST">
+                                <input type="hidden" name="idpessoa" value="<?=$PJuridica["idpessoa"]?>"/>
                                 <input type="submit" value="Editar" name="editar"/>
                             </form>
                         </td>
                         <td>
                             <form name="excluir" action="inc/funcoes.php" method="POST">
-                                <input type="hidden" name="idproduto" value="<?=$produto["idproduto"]?>"/>
-                                <input type="hidden" name="acao" value="excluirProduto"/>
+                                <input type="hidden" name="idpessoa" value="<?=$PJuridica["idpessoa"]?>"/>
+                                <input type="hidden" name="acao" value="excluirPJuridica"/>
                                 <input type="submit" value="Excluir" name="excluir"/>
                             </form>
                         </td>

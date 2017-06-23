@@ -47,6 +47,10 @@ if(isset($_POST["acao"])){
         updateCidade();
     }
     
+    if($_POST["acao"]=="alterarPJuridica"){
+        updatePJuridica();
+    }
+    
     if($_POST["acao"]=="excluirEstado"){
         dropEstado();
     }
@@ -64,6 +68,10 @@ if(isset($_POST["acao"])){
     
     if($_POST["acao"]=="excluirProduto"){
         dropProduto();
+    }
+    
+    if($_POST["acao"]=="excluirPJuridica"){
+        dropPJuridica();
     }
 }
 //---------------------------------------------//
@@ -193,7 +201,7 @@ function inserirCategoria(){
     
     if(mysqli_num_rows($resultado) > 0 ){
         echo " 
-            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/cestado.php'>
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/ccategoria.php'>
             <script type=\"text/javascript\">
                 alert(\"Dados de Categoria repetidos no Sistema!\");
             </script>
@@ -224,26 +232,41 @@ function inserirCategoria(){
 }
 function inserirProduto(){
     $banco = abrirBanco();
+    $nomeproduto=$_POST["nomeproduto"];
     
-    $sql = "INSERT INTO produto (nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES ('{$_POST["nomeproduto"]}','{$_POST["lote"]}','{$_POST["valorvenda"]}','{$_POST["valorcompra"]}','{$_POST["qtdestoque"]}','{$_POST["categoriaproduto_idcategoriaproduto"]}','{$_POST["localproduto_idlocalproduto"]}')";
-    $banco->query($sql);
+    $ver = "SELECT * FROM produto WHERE nomeproduto = '$nomeproduto'";
+    $resultado = $banco->query($ver);
     
-    if(mysqli_affected_rows($banco) != 0){
+    if(mysqli_num_rows($resultado) > 0 ){
         echo " 
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/cproduto.php'>
             <script type=\"text/javascript\">
-                alert(\"Produto Cadastrado com sucesso!\");
+                alert(\"Dados de Produto repetidos no Sistema!\");
             </script>
         ";
     }
     else{
-        echo " 
-            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/cproduto.php'>
-            <script type=\"text/javascript\">
-                alert(\"Erro ao Cadastrar um Produto!\");
-            </script>
-        ";
     
+        $sql = "INSERT INTO produto (nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES ('{$_POST["nomeproduto"]}','{$_POST["lote"]}','{$_POST["valorvenda"]}','{$_POST["valorcompra"]}','{$_POST["qtdestoque"]}','{$_POST["categoriaproduto_idcategoriaproduto"]}','{$_POST["localproduto_idlocalproduto"]}')";
+        $banco->query($sql);
+
+        if(mysqli_affected_rows($banco) != 0){
+            echo " 
+                <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/cproduto.php'>
+                <script type=\"text/javascript\">
+                    alert(\"Produto Cadastrado com sucesso!\");
+                </script>
+            ";
+        }
+        else{
+            echo " 
+                <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/cproduto.php'>
+                <script type=\"text/javascript\">
+                    alert(\"Erro ao Cadastrar um Produto!\");
+                </script>
+            ";
+
+        }
     }
     $banco->close();
 }
@@ -256,7 +279,7 @@ function inserirSecao(){
     
     if(mysqli_num_rows($resultado) > 0){
         echo " 
-            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/cestado.php'>
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/csecao.php'>
             <script type=\"text/javascript\">
                 alert(\"Dados de Seção repetidos no Sistema!\");
             </script>
@@ -332,7 +355,7 @@ function inserirPJuridica(){
     $res_idpessoa = $dadosP->fetch_array();
     
     //Insere a Conexão entre Pessoa e Endereço;
-    $sql = "INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUE ('".$res_endereco['idendereco']."','".$res_idpessoa['idpessoa']."','{$_POST["numero"]}','{$_POST["complemento"]}'";
+    $sql = "INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUES ('".$res_endereco['idendereco']."','".$res_idpessoa['idpessoa']."','{$_POST["numero"]}','{$_POST["complemento"]}')";
     $banco->query($sql);
     
     if(mysqli_affected_rows($banco) != 0){
@@ -368,16 +391,21 @@ function inserirPJuridica(){
 
 function selectAllProduto(){
     $banco = abrirBanco();
-    $sql = "SELECT * FROM produto ORDER BY nomeproduto";
+    $sql = "SELECT * FROM produto P, categoriaproduto C, localproduto L WHERE P.categoriaproduto_idcategoriaproduto = C.idcategoriaproduto AND P.localproduto_idlocalproduto = L.idlocalproduto ORDER BY nomeproduto";
     $resultado = $banco->query($sql);
     $banco->close();
     
     while($row_lista = $resultado->fetch_array()){
         $array[] = $row_lista;
     }
-    return $array;
+    if (empty($array)) {
+        echo '<h3>Nenhum Produto encontrado no Sistema</h3>';
+        exit();
+    }
+    else{
+        return $array;
+    }
 }
-
 function selectAllSecao(){
     $banco = abrirBanco();
     $sql = "SELECT * FROM localproduto ORDER BY secaoproduto";
@@ -387,9 +415,14 @@ function selectAllSecao(){
     while($row_lista = $resultado->fetch_array()){
         $array[] = $row_lista;
     }
-    return $array;
+    if (empty($array)) {
+        echo '<h3>Nenhuma Seção encontrada no Sistema</h3>';
+        exit();
+    }
+    else{
+        return $array;
+    }
 }
-
 function selectAllEstados(){
     $banco = abrirBanco();
     $sql = "SELECT * FROM estado ORDER BY uf";
@@ -399,7 +432,13 @@ function selectAllEstados(){
     while($row_lista = $resultado->fetch_array()){
         $array[] = $row_lista;
     }
-    return $array;
+    if (empty($array)) {
+        echo '<h3>Nenhum Estado encontrado no Sistema</h3>';
+        exit();
+    }
+    else{
+        return $array;
+    }
 }
 function selectAllCategorias(){
     $banco = abrirBanco();
@@ -410,23 +449,49 @@ function selectAllCategorias(){
     while($row_lista = $resultado->fetch_array()){
         $array[] = $row_lista;
     }
-    return $array;
+    if (empty($array)) {
+        echo '<h3>Nenhuma Categoria encontrada no Sistema</h3>';
+        exit();
+    }
+    else{
+        return $array;
+    }
     
 }
 function selectAllCidades(){
     $banco = abrirBanco();
-    $sql = "SELECT * FROM cidade ORDER BY estado_idestado";
+    $sql = "SELECT * FROM cidade C, estado E WHERE C.estado_idestado = E.idestado ORDER BY estado_idestado";
     $resultado = $banco->query($sql);
     $banco->close();
     
     while($row_lista = $resultado->fetch_array()){
         $array[] = $row_lista;
     }
-    return $array;
+    if (empty($array)) {
+        echo '<h3>Nenhuma Cidade encontrada no Sistema</h3>';
+        exit();
+    }
+    else{
+        return $array;
+    }
 }
 function selectAllPJuridica(){
     $banco = abrirBanco();
-    $sql = "SELECT * FROM";
+    $sql = "SELECT * FROM pessoa P, juridica J, contato C, contatopessoa CP, enderecopessoa ED, endereco E, cidade CI WHERE P.idpessoa = J.pessoa_idpessoa AND P.idpessoa = ED.pessoa_idpessoa AND E.idendereco = ED.endereco_idendereco AND P.idpessoa = CP.pessoa_idpessoa AND C.idcontato = CP.contato_idcontato AND E.cidade_idcidade = CI.idcidade ORDER BY P.idpessoa";
+    $resultado = $banco->query($sql);
+    $banco->close();
+    
+    while($row_lista = $resultado->fetch_array()){
+        $array[] = $row_lista;
+    }
+    if (empty($array)) {
+        echo '<h3>Nenhuma Pessoa encontrada no Sistema</h3>';
+        exit();
+    }
+    else{
+        return $array;
+    }
+    
 }
 function selectIdEstado($idestado){
     $banco = abrirBanco();
@@ -465,6 +530,14 @@ function selectIdSecao($idlocalproduto){
 function selectIdProduto($idproduto){
     $banco = abrirBanco();
     $sql = "SELECT * FROM produto WHERE idproduto = '{$idproduto}'" ;
+    $resultado = $banco->query($sql);
+    $banco->close();
+    
+    return mysqli_fetch_assoc($resultado);
+}
+function selectIdPessoa($idpessoa){
+    $banco = abrirBanco();
+    $sql = "SELECT * FROM pessoa P, juridica J, contato C, contatopessoa CP, enderecopessoa ED, endereco E, cidade CI WHERE P.idpessoa ='{$idpessoa}' AND P.idpessoa = J.pessoa_idpessoa AND P.idpessoa = ED.pessoa_idpessoa AND E.idendereco = ED.endereco_idendereco AND P.idpessoa = CP.pessoa_idpessoa AND C.idcontato = CP.contato_idcontato AND E.cidade_idcidade = CI.idcidade ORDER BY P.idpessoa";
     $resultado = $banco->query($sql);
     $banco->close();
     
@@ -600,6 +673,48 @@ function updateProduto(){
     }
     $banco->close();
 }
+function updatePJuridica(){
+    $banco = abrirBanco();
+    $idpessoa = $_POST['idpessoa'];
+    
+    $sqlP = "UPDATE juridica SET razaosocial='{$_POST["razaosocial"]}', nomefantasia='{$_POST["nomefantasia"]}', cnpj='{$_POST["cnpj"]}', inscrestad='{$_POST["inscrestad"]}' WHERE pessoa_idpessoa='$idpessoa'";
+    $banco->query($sqlP);
+    
+    $sqlCP = "SELECT contato_idcontato FROM contatopessoa WHERE pessoa_idpessoa='$idpessoa'";
+    $dadosCP = $banco->query($sqlCP);
+    $res_contatoP = $dadosCP->fetch_assoc();
+    
+    $sqlC = "UPTADE contato SET telefone='{$_POST["telefone"]}', email='{$_POST["email"]}' WHERE idcontato='".$res_contatoP['contato_idcontato']."'";
+    $banco->query($sqlC);
+    
+    $sqlEP = "SELECT endereco_idendereco FROM enderecopessoa WHERE pessoa_idpessoa='$idpessoa'";
+    $dadosEP = $banco->query($sqlEP);
+    $res_enderecoP = $dadosEP->fetch_array();
+    
+    $sqlE = "UPDATE endereco SET logradouro='{$_POST["logradouro"]}', cep='{$_POST["cep"]}', bairro='{$_POST["bairro"]}', cidade_idcidade='{$_POST["cidade_idcidade"]}' WHERE idendereco='".$res_enderecoP['endereco_idendereco']."'";
+    $banco->query($sqlE);
+    
+    $sqlUEP = "UPDATE enderecopessoa SET numero='{$_POST["numero"]}', complemento='{$_POST["complemento"]} WHERE pessoa_idpessoa='$idpessoa'";
+    $banco->query($sqlUEP);
+    
+    if(mysqli_affected_rows($banco) != 0){
+        echo " 
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selPJuridica.php'>
+            <script type=\"text/javascript\">
+                alert(\"Pessoa Jurídica Atualizada com sucesso!\");
+            </script>
+        ";
+    }
+    else{
+        echo " 
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selPJuridica.php'>
+            <script type=\"text/javascript\">
+                alert(\"Erro ao Atualizar uma Pessoa Juridica!\");
+            </script>
+        ";
+    }
+    $banco->close();
+}
 //---------------------------------------------//
 
 
@@ -722,6 +837,54 @@ function dropProduto(){
             <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selProduto.php'>
             <script type=\"text/javascript\">
                 alert(\"Erro ao Excluir um Produto!\");
+            </script>
+        ";
+    }
+    $banco->close();
+}
+function dropPJuridica(){
+    $banco = abrirBanco();    
+    $idpessoa = $_POST['idpessoa'];
+    
+    $sqlCP = "SELECT contato_idcontato FROM contatopessoa WHERE pessoa_idpessoa='$idpessoa'";
+    $dadosCP = $banco->query($sqlCP);
+    $res_contatoP = $dadosCP->fetch_assoc();
+    
+    $sqlC = "DELET FROM contato WHERE idcontato = ".$res_contatoP['contato_idcontato']."'";
+    $banco->query($sqlC);
+    
+    $sqlDCP = "DELETE FROM contatopessoa WHERE pessoa_idpessoa = '$idpessoa'";
+    $banco->query($sqlDCP);
+    
+    $sqlEP = "SELECT endereco_idendereco FROM enderecopessoa WHERE pessoa_idpessoa='$idpessoa'";
+    $dadosEP = $banco->query($sqlEP);
+    $res_enderecoP = $dadosEP->fetch_array();
+    
+    $sqlE = "DELETE FROM endereco WHERE idendereco ='".$res_enderecoP['endereco_idendereco']."'";
+    $banco->query($sqlE);
+    
+    $sqlDEP = "DELETE FROM enderecopessoa WHERE pessoa_idpessoa ='$idpessoa'";
+    $banco->query($sqlDEP);
+    
+    $sqlP = "DELETE FROM juridica WHERE pessoa_idpessoa = '$idpessoa'";
+    $banco->query($sqlP);
+    
+    $sqlDP = "DELETE FROM pessoa WHERE idpessoa = '$idpessoa'";
+    $banco->query($sqlDP);
+    
+    if(mysqli_affected_rows($banco) != 0){
+        echo " 
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selPJuridica.php'>
+            <script type=\"text/javascript\">
+                alert(\"Pessoa Jurídica Excluida com sucesso!\");
+            </script>
+        ";
+    }
+    else{
+        echo " 
+            <META HTTP-EQUIV=REFRESH CONTENT = '0;URL=http://localhost/apsbd1/selPJuridica.php'>
+            <script type=\"text/javascript\">
+                alert(\"Erro ao Excluir uma Pessoa Jurídica!\");
             </script>
         ";
     }

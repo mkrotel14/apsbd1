@@ -11,29 +11,29 @@
     </head>
     
     <body>
-        <form name="Juridica" action="inc/funcoes.php" method="POST">
+        <form name="Juridica" action="inc/funcoes.php" method="POST" onsubmit="return validaPJuridica()">
             Razao Social:
-            <input type="text" name="razaosocial" value="" size="75" />
+            <input type="text" name="razaosocial" id="razaosocial" value="" size="75" />
             Nome Fantasia:
-            <input type="text" name="nomefantasia" value="" size="75" /><br><br>
+            <input type="text" name="nomefantasia" id="nomefantasia" value="" size="75" /><br><br>
             CNPJ:
-            <input type="text" name="cnpj" value="" size="25" />
+            <input type="text" name="cnpj" value="" id="cnpj" size="25" />
             Inscrição Estadual:
-            <input type="text" name="inscrestad" value="" size="25" />
+            <input type="text" name="inscrestad" id="inscrestad" value="" size="25" />
             <h3>Contato</h3>
             Telefone:
-            <input type="text" name="telefone" size="20">
+            <input type="text" name="telefone" id="telefone" size="20">
             E-mail:
-            <input type="text" name="email" size="30"><br><br>
+            <input type="text" name="email" id="email" size="30"><br><br>
             <h3>Endereço de Cobrança</h3>
             Rua:
-            <input type="text" name="logradouro" size="50" />
+            <input type="text" name="logradouro" id="logradouro" size="50" />
             CEP:
-            <input type="text" name="cep" size="20" />
+            <input type="text" name="cep" id="cep" size="20" />
             Bairro:
-            <input type="text" name="bairro" size="20" />
+            <input type="text" name="bairro" id="bairro" size="20" />
             Número:
-            <input type="text" name="numero" size="10"/><br><br>
+            <input type="text" name="numero" id="numero" size="10"/><br><br>
             Complemento:
             <input type="text" name="complemento" size="15"/>
             Cidade:
@@ -51,7 +51,6 @@
             <input type="submit" value="Cadastrar Fornecedor">
             <input type="reset" value="Limpar Dados">
         </form>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="js/sub_cidade.js"></script>
+        <script src="js/campo_obrigatorio.js"></script>
     </body>
 </html>

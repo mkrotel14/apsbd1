@@ -10,19 +10,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form name="Produto" action="inc/funcoes.php" method="POST">
+        <form name="Produto" action="inc/funcoes.php" method="POST" onsubmit="return validaProduto()"/>
             Nome do Produto:
-            <input type="text" name="nomeproduto" size="60" />
+            <input type="text" name="nomeproduto" id="nomeproduto" size="60" />
             Lote:
-            <input type="text" name="lote" size="15" /><br><br>
+            <input type="text" name="lote" id="lote" size="15" /><br><br>
             Valor da Venda:
-            <input type="text" name="valorvenda" size="15">
+            <input type="text" name="valorvenda" id="valorvenda" size="15"/>
             Valor da Compra:
-            <input type="text" name="valorcompra" size="15">
+            <input type="text" name="valorcompra" id="valorcompra" size="15"/>
             Qtd. Estoque:
-            <input type="text" name="qtdestoque" size="10"><br><br>
+            <input type="text" name="qtdestoque" id="qtdestoque" size="10"/><br><br>
             Categoria Produto:
-            <select name="categoriaproduto_idcategoriaproduto">
+            <select name="categoriaproduto_idcategoriaproduto" id="categoriaproduto">
                 <option value="">Selecione a Categoria</option>
                 <?php
                     $sql = "SELECT * FROM categoriaproduto";
@@ -33,7 +33,7 @@
                 ?>                
             </select>
             Seção do Produto:
-            <select name="localproduto_idlocalproduto">
+            <select name="localproduto_idlocalproduto" id="localproduto" >
                 <option value="">Selecione a Seção</option>
                 <?php
                     $sql = "SELECT * FROM localproduto";

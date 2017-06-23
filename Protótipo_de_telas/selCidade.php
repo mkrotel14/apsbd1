@@ -15,7 +15,7 @@
                 <thead>
                     <tr>
                         <th>Nome da Cidade</th>
-                        <th>Id_Estado</th>
+                        <th>Nome do Estado</th>
                         <th>Editar</th>
                         <th>Excluir</th>
                     </tr>
@@ -27,7 +27,7 @@
 
                     <tr>
                         <td><?=$cidade["nomecidade"]?></td>
-                        <td><?=$cidade["estado_idestado"]?></td>
+                        <td><?=$cidade["nomeestado"]?></td>
                         <td>
                             <form name="alterar" action="altCidade.php" method="POST">
                                 <input type="hidden" name="idcidade" value="<?=$cidade["idcidade"]?>"/>

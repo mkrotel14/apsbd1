@@ -10,33 +10,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form name="Produto" action="inc/funcoes.php" method="POST">
+        <form name="Produto" action="inc/funcoes.php" method="POST" onsubmit="return validaProduto()">
             <table>
                 <tr>
                     <td>Nome do Produto:</td>
-                    <td><input type="text" name="nomeproduto" value="<?=$produto['nomeproduto']?>" size="60" /></td>
+                    <td><input type="text" name="nomeproduto" id="nomeproduto" value="<?=$produto['nomeproduto']?>" size="60" /></td>
                 </tr>
                 <tr>
                     <td>Lote:</td>
-                    <td><input type="text" name="lote" size="15" value="<?=$produto['lote']?>"/></td>                   
+                    <td><input type="text" name="lote" size="15" id="lote" value="<?=$produto['lote']?>"/></td>                   
                 </tr>
                 <tr>
                     <td>Valor da Venda:</td>
-                    <td><input type="text" name="valorvenda" size="15" value="<?=$produto['valorvenda']?>" /></td>
+                    <td><input type="text" name="valorvenda" size="15" id="valorvenda" value="<?=$produto['valorvenda']?>" /></td>
                     
                 </tr>
                 <tr>
                     <td>Valor da Compra:</td>
-                    <td><input type="text" name="valorcompra" size="15" value="<?=$produto['valorcompra']?>" /></td> 
+                    <td><input type="text" name="valorcompra" size="15" id="valorcompra" value="<?=$produto['valorcompra']?>" /></td> 
                     
                 </tr>
                 <tr>
                     <td>Qtd. Estoque:</td>
-                    <td><input type="text" name="qtdestoque" size="10" value="<?=$produto['qtdestoque']?>"/></td>
+                    <td><input type="text" name="qtdestoque" id="qtdestoque" size="10" value="<?=$produto['qtdestoque']?>"/></td>
                 </tr>
                 <tr>
                      <td>Categoria Produto:</td>
-                    <td><select name="categoriaproduto_idcategoriaproduto">
+                     <td><select name="categoriaproduto_idcategoriaproduto" id="categoriaproduto" >
                             <option value="">Escolha a Categoria</option>
                             <?php
                                 $sql = "SELECT * FROM categoriaproduto ORDER BY nomecategoria";
@@ -49,7 +49,7 @@
                 </tr>
                 <tr>
                     <td>Seção do Produto:</td>
-                    <td><select name="localproduto_idlocalproduto">
+                    <td><select name="localproduto_idlocalproduto" id="localproduto" >
                             <option value="">Escolha a Seção</option>
                             <?php
                                 $sql = "SELECT * FROM localproduto ORDER BY secaoproduto";

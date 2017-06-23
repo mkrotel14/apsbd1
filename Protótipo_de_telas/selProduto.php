@@ -19,8 +19,8 @@
                         <th>Valor da Venda</th>
                         <th>Valor da Compra</th>
                         <th>Qtd. Estoque</th>
-                        <th>Id_Categoria</th>
-                        <th>Id_Seção</th>
+                        <th>Categoria</th>
+                        <th>Seção</th>
                         <th>Editar</th>
                         <th>Excluir</th>
                     </tr>
@@ -35,8 +35,8 @@
                         <td><?=$produto["valorvenda"]?></td>
                         <td><?=$produto["valorcompra"]?></td>
                         <td><?=$produto["qtdestoque"]?></td>
-                        <td><?=$produto["categoriaproduto_idcategoriaproduto"]?></td>
-                        <td><?=$produto["localproduto_idlocalproduto"]?></td>
+                        <td><?=$produto["nomecategoria"]?></td>
+                        <td><?=$produto["secaoproduto"]?></td>
                         <td>
                             <form name="alterar" action="altProduto.php" method="POST">
                                 <input type="hidden" name="idproduto" value="<?=$produto["idproduto"]?>"/>
