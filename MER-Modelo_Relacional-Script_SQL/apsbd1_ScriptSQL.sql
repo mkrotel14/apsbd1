@@ -335,9 +335,9 @@ INSERT INTO fisica (idfisica, nome, rg, cpf, datanasc, pessoa_idpessoa) VALUES (
 INSERT INTO juridica (idjuridica, cnpj, inscrestad, razaosocial, nomefantasia, pessoa_idpessoa) VALUES (1, '66.974.999/0001-88', '995.857.826.630', 'Theo Publicidade e Propaganda', 'Theo Publicidade e Propaganda', 2);
 INSERT INTO juridica (idjuridica, cnpj, inscrestad, razaosocial, nomefantasia, pessoa_idpessoa) VALUES (2, '29.448.726/0001-73', '037.061.095.058', 'Arthur e Isabel Lavanderia ME', 'Arthur e Isabel Lavanderia ME', 3);
 INSERT INTO fisica (idfisica, nome, rg, cpf, datanasc, pessoa_idpessoa) VALUES (2, 'Benjamin Bernardo', '50.097.434-2', '273.045.384-90', '25/07/1989', 4);
-INSERT INTO cliente (idcliente, fisica_idfisica) VALUES (1, 4)
+INSERT INTO cliente (idcliente, fisica_idfisica) VALUES (1, 2);
 
-INSERT INTO funcionario (idfuncionario, funcao, admissao, salario, status, fisica_idfisica) VALUES (1, 'vendedor', '25/07/2005', 1500.00, 'ativo', 0);
+INSERT INTO funcionario (idfuncionario, funcao, admissao, salario, status, fisica_idfisica) VALUES (1, 'vendedor', '25/07/2005', 1500.00, 'ativo', 1);
 INSERT INTO fornecedor (idfornecedor, juridica_idjuridica) VALUES (1,1);
 INSERT INTO fornecedor (idfornecedor, juridica_idjuridica) VALUES (2,2);
 
@@ -380,8 +380,8 @@ INSERT INTO compra (idcompra, valorc, datac, funcionario_idfuncionario, forneced
 INSERT INTO parcelacompra (idparcelacompra, cdatavcto, cvalorpar, cdatapagto, cvalorpgo, compra_idcompra) VALUES (1, '20/12/2006', 1500.00, '20/12/2006', 1500.00, 1);
 INSERT INTO parcelacompra (idparcelacompra, cdatavcto, cvalorpar, cdatapagto, cvalorpgo, compra_idcompra) VALUES (2, '13/06/2006', 100.00, '13/06/2006', 100.00, 2);
 
-INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (1, 'GTX 1060 6GB', 9875, 1800.00, 1500.00, 1, 4);
-INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (2, 'Fone de Ouvido Intraauricular', 2520, 150.00, 100.00, 6, 3);
+INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (1, 'GTX 1060 6GB', 9875, 1800.00, 1500.00, 10, 1, 4);
+INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (2, 'Fone de Ouvido Intraauricular', 2520, 150.00, 100.00, 20, 6, 3);
 
 INSERT INTO produtocomprado (compra_idcompra, produto_idproduto, valorunitarioc, qtdcomprada) VALUES (1, 1, 4500.00, 3);
 INSERT INTO produtocomprado (compra_idcompra, produto_idproduto, valorunitarioc, qtdcomprada) VALUES (2, 2, 1000.00, 10);
@@ -404,7 +404,7 @@ INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALU
 INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (2, 'Rua Marçal', '69010-260', 'Centro', 1);
 INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (3, 'Rua Ouro', '65632-245', 'Jóia', 7);
 INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (4, 'Rua Frei Serafim', '65604-340', 'Nova Caxias', 3);
-INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (4, 'Avenida da Fazenda', '69921-443', 'Montanhês', 8);
+INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (5, 'Avenida da Fazenda', '69921-443', 'Montanhês', 8);
 
 INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUES (1, 1, 225, '');
 INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUES (2, 2, 1024, 'Apartamento 102');
