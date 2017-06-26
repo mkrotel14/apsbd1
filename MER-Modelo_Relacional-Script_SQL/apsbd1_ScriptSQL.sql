@@ -330,12 +330,25 @@ INSERT INTO pessoa (idpessoa, tipopessoa) VALUES (1, 'fisica');
 INSERT INTO pessoa (idpessoa, tipopessoa) VALUES (2, 'juridica');
 INSERT INTO pessoa (idpessoa, tipopessoa) VALUES (3, 'juridica');
 INSERT INTO pessoa (idpessoa, tipopessoa) VALUES (4, 'fisica');
+INSERT INTO pessoa (idpessoa, tipopessoa) VALUES (5, 'fisica');
+INSERT INTO pessoa (idpessoa, tipopessoa) VALUES (6, 'fisica');
+INSERT INTO pessoa (idpessoa, tipopessoa) VALUES (7, 'fisica');
+INSERT INTO pessoa (idpessoa, tipopessoa) VALUES (8, 'fisica');
 
 INSERT INTO fisica (idfisica, nome, rg, cpf, datanasc, pessoa_idpessoa) VALUES (1, 'Otávio Caio', '37.356.292-5', '118.807.204-85', '17/01/1995', 1);
+INSERT INTO fisica (idfisica, nome, rg, cpf, datanasc, pessoa_idpessoa) VALUES (2, 'Benjamin Bernardo', '50.097.434-2', '273.045.384-90', '25/07/1989', 4);
+INSERT INTO fisica (idfisica, nome, rg, cpf, datanasc, pessoa_idpessoa) VALUES (3, 'Rafael Pedro Lima', '24.800.229-6', '687.479.299-79', '25/08/1995', 5);
+INSERT INTO fisica (idfisica, nome, rg, cpf, datanasc, pessoa_idpessoa) VALUES (4, 'Renato Kevin Campos', '21.122.824-2', '591.629.219-83', '591.629.219-83', 6);
+INSERT INTO fisica (idfisica, nome, rg, cpf, datanasc, pessoa_idpessoa) VALUES (5, 'André Benício Monteiro', '21.839.203-5', '038.896.279-86', '04/12/1995', 7);
+INSERT INTO fisica (idfisica, nome, rg, cpf, datanasc, pessoa_idpessoa) VALUES (6, 'Ricardo João Heitor Rodrigues', '43.993.866-1', '939.291.869-00', '18/01/1995', 8);
 INSERT INTO juridica (idjuridica, cnpj, inscrestad, razaosocial, nomefantasia, pessoa_idpessoa) VALUES (1, '66.974.999/0001-88', '995.857.826.630', 'Theo Publicidade e Propaganda', 'Theo Publicidade e Propaganda', 2);
 INSERT INTO juridica (idjuridica, cnpj, inscrestad, razaosocial, nomefantasia, pessoa_idpessoa) VALUES (2, '29.448.726/0001-73', '037.061.095.058', 'Arthur e Isabel Lavanderia ME', 'Arthur e Isabel Lavanderia ME', 3);
-INSERT INTO fisica (idfisica, nome, rg, cpf, datanasc, pessoa_idpessoa) VALUES (2, 'Benjamin Bernardo', '50.097.434-2', '273.045.384-90', '25/07/1989', 4);
 INSERT INTO cliente (idcliente, fisica_idfisica) VALUES (1, 2);
+INSERT INTO cliente (idcliente, fisica_idfisica) VALUES (2, 3);
+INSERT INTO cliente (idcliente, fisica_idfisica) VALUES (3, 4);
+INSERT INTO cliente (idcliente, fisica_idfisica) VALUES (4, 5);
+INSERT INTO cliente (idcliente, fisica_idfisica) VALUES (5, 6);
+
 
 INSERT INTO funcionario (idfuncionario, funcao, admissao, salario, status, fisica_idfisica) VALUES (1, 'vendedor', '25/07/2005', 1500.00, 'ativo', 1);
 INSERT INTO fornecedor (idfornecedor, juridica_idjuridica) VALUES (1,1);
@@ -345,11 +358,21 @@ INSERT INTO contato (idcontato, telefone, email) VALUES (1, '(27) 2728-1294', 'o
 INSERT INTO contato (idcontato, telefone, email) VALUES (2, '(51) 3715-1211', 'theo-publi@br.ibm.com');
 INSERT INTO contato (idcontato, telefone, email) VALUES (3, '(18) 2915-9652', 'rh@arthurisabel.com.br');
 INSERT INTO contato (idcontato, telefone, email) VALUES (4, '(62) 2505-0550', 'htdias@vipsaude.com.br');
+INSERT INTO contato (idcontato, telefone, email) VALUES (5, '(41) 2815-7998', 'rafael_pedro@accor.com.br');
+INSERT INTO contato (idcontato, telefone, email) VALUES (6, '(45) 3621-3678', 'renato_kevin@companyvivo.com.br');
+INSERT INTO contato (idcontato, telefone, email) VALUES (7, '(46) 3650-6038', 'andre-benicio99@ceuazul.ind.br');
+INSERT INTO contato (idcontato, telefone, email) VALUES (8, '(41) 2852-1565', 'ricardo-joao74@focoreducao.com.br');
+
 
 INSERT INTO contatopessoa (pessoa_idpessoa, contato_idcontato) VALUES (1,1);
 INSERT INTO contatopessoa (pessoa_idpessoa, contato_idcontato) VALUES (2,2);
 INSERT INTO contatopessoa (pessoa_idpessoa, contato_idcontato) VALUES (3,3);
 INSERT INTO contatopessoa (pessoa_idpessoa, contato_idcontato) VALUES (4,4);
+INSERT INTO contatopessoa (pessoa_idpessoa, contato_idcontato) VALUES (5,5);
+INSERT INTO contatopessoa (pessoa_idpessoa, contato_idcontato) VALUES (6,6);
+INSERT INTO contatopessoa (pessoa_idpessoa, contato_idcontato) VALUES (7,7);
+INSERT INTO contatopessoa (pessoa_idpessoa, contato_idcontato) VALUES (8,8);
+
 
 INSERT INTO login (idlogin, login, senha, funcionario_idfuncionario) VALUES (1, 'otavio', 'senha123', 1);
 
@@ -359,6 +382,9 @@ INSERT INTO categoriaproduto (idcategoriaproduto, nomecategoria, descricaocatego
 INSERT INTO categoriaproduto (idcategoriaproduto, nomecategoria, descricaocategoria) VALUES (4, 'Gabinetes', 'Gabinetes para computador');
 INSERT INTO categoriaproduto (idcategoriaproduto, nomecategoria, descricaocategoria) VALUES (5, 'Notebook', 'Produto Notebook');
 INSERT INTO categoriaproduto (idcategoriaproduto, nomecategoria, descricaocategoria) VALUES (6, 'Diversos', 'Acessorios variados para informática');
+INSERT INTO categoriaproduto (idcategoriaproduto, nomecategoria, descricaocategoria) VALUES (7, 'Software', 'Programas de Computador');
+INSERT INTO categoriaproduto (idcategoriaproduto, nomecategoria, descricaocategoria) VALUES (8, 'Hardware', 'Peças em Geral');
+
 
 INSERT INTO localproduto (idlocalproduto, secaoproduto) VALUES (1, 'Seção A-B');
 INSERT INTO localproduto (idlocalproduto, secaoproduto) VALUES (2, 'Seção C-D');
@@ -376,15 +402,39 @@ INSERT INTO localproduto (idlocalproduto, secaoproduto) VALUES (13, 'Seção Y-Z
 
 INSERT INTO compra (idcompra, valorc, datac, funcionario_idfuncionario, fornecedor_idfornecedor) VALUES (1, 1500.00, '20/11/2006', 1, 1);
 INSERT INTO compra (idcompra, valorc, datac, funcionario_idfuncionario, fornecedor_idfornecedor) VALUES (2, 100.00, '13/06/2006', 1, 2);
+INSERT INTO compra (idcompra, valorc, datac, funcionario_idfuncionario, fornecedor_idfornecedor) VALUES (3, 300.00, '20/06/2006', 1, 2);
+INSERT INTO compra (idcompra, valorc, datac, funcionario_idfuncionario, fornecedor_idfornecedor) VALUES (4, 350.00, '30/07/2006', 1, 1);
+INSERT INTO compra (idcompra, valorc, datac, funcionario_idfuncionario, fornecedor_idfornecedor) VALUES (5, 1700.00, '22/03/2006', 1, 1);
+INSERT INTO compra (idcompra, valorc, datac, funcionario_idfuncionario, fornecedor_idfornecedor) VALUES (6, 200.00, '14/02/2006', 1, 2);
+INSERT INTO compra (idcompra, valorc, datac, funcionario_idfuncionario, fornecedor_idfornecedor) VALUES (7, 2500.00, '15/01/2006', 1, 1);
+INSERT INTO compra (idcompra, valorc, datac, funcionario_idfuncionario, fornecedor_idfornecedor) VALUES (8, 500.00, '19/10/2006', 1, 2);
 
 INSERT INTO parcelacompra (idparcelacompra, cdatavcto, cvalorpar, cdatapagto, cvalorpgo, compra_idcompra) VALUES (1, '20/12/2006', 1500.00, '20/12/2006', 1500.00, 1);
 INSERT INTO parcelacompra (idparcelacompra, cdatavcto, cvalorpar, cdatapagto, cvalorpgo, compra_idcompra) VALUES (2, '13/06/2006', 100.00, '13/06/2006', 100.00, 2);
+INSERT INTO parcelacompra (idparcelacompra, cdatavcto, cvalorpar, cdatapagto, cvalorpgo, compra_idcompra) VALUES (3, '20/06/2006', 300.00, '20/06/2006', 300.00, 3);
+INSERT INTO parcelacompra (idparcelacompra, cdatavcto, cvalorpar, cdatapagto, cvalorpgo, compra_idcompra) VALUES (4, '30/07/2006', 350.00, '30/07/2006', 350.00, 4);
+INSERT INTO parcelacompra (idparcelacompra, cdatavcto, cvalorpar, cdatapagto, cvalorpgo, compra_idcompra) VALUES (5, '22/03/2006', 1700.00, '22/03/2006', 1700.00, 5);
+INSERT INTO parcelacompra (idparcelacompra, cdatavcto, cvalorpar, cdatapagto, cvalorpgo, compra_idcompra) VALUES (6, '14/02/2006', 200.00, '14/02/2006', 200.00, 6);
+INSERT INTO parcelacompra (idparcelacompra, cdatavcto, cvalorpar, cdatapagto, cvalorpgo, compra_idcompra) VALUES (7, '15/01/2006', 2500.00, '15/01/2006', 2500.00, 7);
+INSERT INTO parcelacompra (idparcelacompra, cdatavcto, cvalorpar, cdatapagto, cvalorpgo, compra_idcompra) VALUES (8, '19/10/2006', 500.00, '19/10/2006', 500.00, 8);
 
-INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (1, 'GTX 1060 6GB', 9875, 1800.00, 1500.00, 10, 1, 4);
+INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (1, 'Placa de Video GTX 1060 6GB', 9875, 1800.00, 1500.00, 10, 1, 8);
 INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (2, 'Fone de Ouvido Intraauricular', 2520, 150.00, 100.00, 20, 6, 3);
+INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (3, 'Mouse Razer DeathAdder 2013', 1157, 350.00, 300.00, 1, 2, 7);
+INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (4, 'Fonte Corsair 800W', 0570, 450.00, 350.00, 1, 8, 3);
+INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (5, 'Processaor i7 7700K', 1265, 2500.00, 1700.00, 1, 8, 8);
+INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (6, 'Windows 10 PRO', 9896, 350.00, 200.00, 1, 7, 12);
+INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (7, 'Notebook Asus A578', 1551, 2700.00, 2500.00, 1, 5, 7);
+INSERT INTO produto (idproduto, nomeproduto, lote, valorvenda, valorcompra, qtdestoque, categoriaproduto_idcategoriaproduto, localproduto_idlocalproduto) VALUES (8, 'Adobe Photoshop', 8852, 700.00, 500.00, 1, 7, 1);
 
 INSERT INTO produtocomprado (compra_idcompra, produto_idproduto, valorunitarioc, qtdcomprada) VALUES (1, 1, 4500.00, 3);
 INSERT INTO produtocomprado (compra_idcompra, produto_idproduto, valorunitarioc, qtdcomprada) VALUES (2, 2, 1000.00, 10);
+INSERT INTO produtocomprado (compra_idcompra, produto_idproduto, valorunitarioc, qtdcomprada) VALUES (3, 3, 350.00, 1);
+INSERT INTO produtocomprado (compra_idcompra, produto_idproduto, valorunitarioc, qtdcomprada) VALUES (4, 4, 350.00, 1);
+INSERT INTO produtocomprado (compra_idcompra, produto_idproduto, valorunitarioc, qtdcomprada) VALUES (5, 5, 1700.00, 1);
+INSERT INTO produtocomprado (compra_idcompra, produto_idproduto, valorunitarioc, qtdcomprada) VALUES (6, 6, 200.00, 1);
+INSERT INTO produtocomprado (compra_idcompra, produto_idproduto, valorunitarioc, qtdcomprada) VALUES (7, 7, 2500.00, 1);
+INSERT INTO produtocomprado (compra_idcompra, produto_idproduto, valorunitarioc, qtdcomprada) VALUES (8, 8, 500.00, 1);
 
 INSERT INTO estado (idestado, uf, nomeestado) VALUES (1, 'PR', 'Paraná');
 INSERT INTO estado (idestado, uf, nomeestado) VALUES (2, 'SC', 'Santa Catarina');
@@ -404,15 +454,35 @@ INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALU
 INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (2, 'Rua Marçal', '69010-260', 'Centro', 1);
 INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (3, 'Rua Ouro', '65632-245', 'Jóia', 7);
 INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (4, 'Rua Frei Serafim', '65604-340', 'Nova Caxias', 3);
-INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (5, 'Avenida da Fazenda', '69921-443', 'Montanhês', 8);
+INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (5, 'Rua Jorge Mansos do Nascimento Teixeira', '83005-500', 'São Pedro', 4);
+INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (6, 'Rua Henrique Basso', '85915-244', 'São Francisco', 2);
+INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (7, 'Praça dos Pioneiros', '85604-276', 'Cango', 3);
+INSERT INTO endereco (idendereco, logradouro, cep, bairro, cidade_idcidade) VALUES (8, 'Rua Francisco Lopes de Oliveira', '82990-120', 'Cajuru', 7);
 
 INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUES (1, 1, 225, '');
 INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUES (2, 2, 1024, 'Apartamento 102');
 INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUES (3, 3, 356, 'Apartamento 505');
 INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUES (4, 4, 775, '');
+INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUES (5, 5, 378, '');
+INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUES (6, 6, 666, '');
+INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUES (7, 7, 498, '');
+INSERT INTO enderecopessoa (endereco_idendereco, pessoa_idpessoa, numero, complemento) VALUES (8, 8, 136, '');
 
 
 INSERT INTO venda (idvenda, valorv, datav, funcionario_idfuncionario, cliente_idcliente) VALUES (1, 1800.00, '25/12/2006', 1, 1);
+INSERT INTO venda (idvenda, valorv, datav, funcionario_idfuncionario, cliente_idcliente) VALUES (2, 2500.00, '25/12/2006', 1, 2);
+INSERT INTO venda (idvenda, valorv, datav, funcionario_idfuncionario, cliente_idcliente) VALUES (3, 450.00, '25/12/2006', 1, 3);
+INSERT INTO venda (idvenda, valorv, datav, funcionario_idfuncionario, cliente_idcliente) VALUES (4, 350.00, '25/12/2006', 1, 4);
+INSERT INTO venda (idvenda, valorv, datav, funcionario_idfuncionario, cliente_idcliente) VALUES (5, 2700.00, '25/12/2006', 1, 5);
+
 INSERT INTO parcelavenda (idparcelavenda, vdatavcto, vvalorpar, vdatapagto, vvalorpgo, venda_idvenda) VALUES (1, '25/12/2006', 1800.00, '25/12/2006', 1800.00, 1);
+INSERT INTO parcelavenda (idparcelavenda, vdatavcto, vvalorpar, vdatapagto, vvalorpgo, venda_idvenda) VALUES (2, '25/12/2006', 2500.00, '25/12/2006', 2500.00, 2);
+INSERT INTO parcelavenda (idparcelavenda, vdatavcto, vvalorpar, vdatapagto, vvalorpgo, venda_idvenda) VALUES (3, '25/12/2006', 450.00, '25/12/2006', 450.00, 3);
+INSERT INTO parcelavenda (idparcelavenda, vdatavcto, vvalorpar, vdatapagto, vvalorpgo, venda_idvenda) VALUES (4, '25/12/2006', 350.00, '25/12/2006', 350.00, 4);
+INSERT INTO parcelavenda (idparcelavenda, vdatavcto, vvalorpar, vdatapagto, vvalorpgo, venda_idvenda) VALUES (5, '25/12/2006', 2700.00, '25/12/2006', 2700.00, 5);
 
 INSERT INTO prodvendido (venda_idvenda, produto_idproduto, valorunitariov, qtdventida) VALUES (1, 1, 1800.00, 1);
+INSERT INTO prodvendido (venda_idvenda, produto_idproduto, valorunitariov, qtdventida) VALUES (2, 5, 2500.00, 1);
+INSERT INTO prodvendido (venda_idvenda, produto_idproduto, valorunitariov, qtdventida) VALUES (3, 4, 450.00, 1);
+INSERT INTO prodvendido (venda_idvenda, produto_idproduto, valorunitariov, qtdventida) VALUES (4, 6, 350.00, 1);
+INSERT INTO prodvendido (venda_idvenda, produto_idproduto, valorunitariov, qtdventida) VALUES (5, 7, 2700.00, 1);
