@@ -27,6 +27,14 @@ if(isset($_POST["acao"])){
         inserirPJuridica();
     }
     
+    if($_POST["acao"]=="relProduto"){
+        selectProdutoEstado();
+    }
+    
+    if($_POST["acao"]=="relCompraF"){
+        selectComprasFunc();
+    }
+    
     if($_POST["acao"]=="alterarEstado"){
         updateEstado();
     }
@@ -90,6 +98,7 @@ function abrirBanco(){
     if($connection->connect_error){
         die("Conexão com o banco falhou: " . $connection->connect_error);
     }
+    mysqli_set_charset($connection,"utf8");
     return $connection;
 }
 //---------------------------------------------//
@@ -542,6 +551,99 @@ function selectIdPessoa($idpessoa){
     $banco->close();
     
     return mysqli_fetch_assoc($resultado);
+}
+function selectProdutoEstado(){
+    $banco = abrirBanco();
+    
+    $estadoP = $_POST['nomeestado'];
+    
+    $sqlP = "SELECT P.nomeproduto, P.valorvenda FROM produto P, prodvendido PV, venda V, cliente C, fisica F, pessoa PE, enderecopessoa ED, endereco E, cidade CI, estado ES WHERE P.idproduto = PV.produto_idproduto AND V.idvenda = PV.venda_idvenda AND C.idcliente = V.cliente_idcliente AND F.idfisica = C.fisica_idfisica AND PE.idpessoa = F.pessoa_idpessoa AND PE.idpessoa = ED.pessoa_idpessoa AND E.idendereco = ED.endereco_idendereco AND CI.idcidade = E.cidade_idcidade AND CI.estado_idestado = ES.idestado AND ES.nomeestado LIKE '$estadoP'";
+    $resP = $banco->query($sqlP);    
+
+    if(mysqli_affected_rows($banco) != 0){
+        echo '<h3>Lista de Produtos vendidos para o estado '.$estadoP.'';
+        echo '<br><br>';
+        while($row_lista = $resP->fetch_array()){
+            echo ' 
+            <table>
+                <thead>
+                    <tr>
+                        <td><h4>Nome do Produto:</h4></td>
+                        <td>'.$row_lista['nomeproduto'].'</td>
+                    </tr>    
+                </thead> 
+                <tbody>
+                    <tr>
+                        <td><h4>Valor da Venda:</h4></td>
+                        <td>'.$row_lista['valorvenda'].'</td> 
+                    </tr>
+                </tbody>
+            </table><hr class="style18">  
+            ';
+        }
+        echo ' 
+        <form name="voltar" action="../relProdEst.php" method="POST"><br>
+            <input type="submit" value="Voltar"/>
+        </form>';
+    }
+    else{
+        echo '<h3>Nenhum Produto vendido para o estado '.$estadoP.'';
+        echo ' 
+        <form name="voltar" action="../relProdEst.php" method="POST"><br>
+            <input type="submit" value="Voltar"/>
+        </form>';
+    }
+    $banco->close();
+}
+function selectComprasFunc(){
+    $banco = abrirBanco();
+    $idfisica = $_POST['nome'];
+     
+    $sqlN = "SELECT nome FROM fisica WHERE idfisica = '$idfisica'";
+    $resN = $banco->query($sqlN);
+    $row_resN = mysqli_fetch_array($resN);
+    
+    $sqlF = "SELECT F.nome, J.nomefantasia, PR.nomeproduto, PC.valorunitarioc, PC.qtdcomprada FROM pessoa P, juridica J, fornecedor FO, compra C, produtocomprado PC, produto PR, funcionario FU, fisica F WHERE F.idfisica = 1 AND F.idfisica = FU.fisica_idfisica AND P.idpessoa = J.pessoa_idpessoa AND J.idjuridica = FO.juridica_idjuridica AND FO.idfornecedor = C.fornecedor_idfornecedor AND FU.idfuncionario = C.funcionario_idfuncionario AND C.idcompra = PC.compra_idcompra AND PR.idproduto = PC.produto_idproduto";
+    $resF = $banco->query($sqlF);
+    
+    if(mysqli_affected_rows($banco) != 0 ){
+        echo '<h3>Lista de Produtos Comprados do Vendedor: '.$row_resN["nome"].''; 
+        echo '<br><br>';
+        
+        while($row_lista = $resF->fetch_array()){
+           echo '    
+           <table>
+                    <tr>
+                        <td><h4>Nome da Empresa:</h4></td>
+                        <td>'.$row_lista['nomefantasia'].'</td>
+                    </tr>    
+                    <tr>
+                        <td><h4>Nome do Produto:</h4></td>
+                        <td>'.$row_lista['nomeproduto'].'</td> 
+                    </tr>
+                    <tr>
+                        <td><h4>Valor da Compra:</h4></td>
+                        <td>'.$row_lista['valorunitarioc'].'</td> 
+                    </tr>
+                    <tr>
+                        <td><h4>Quantidade:</h4></td>
+                        <td>'.$row_lista['qtdcomprada'].'</td> 
+                    </tr>
+            </table><hr>  
+            ';           
+        }
+        echo ' 
+        <form name="voltar" action="../relCompFunc.php" method="POST"><br>
+            <input type="submit" value="Voltar"/>
+        </form>';
+    }
+    else{
+        echo '<h3>Nenhum Produto Comprado pelo vendedor: '.$row_resN["nome"].'';
+        echo ' 
+        <form name="voltar" action="../relCompFunc.php" method="POST"><br>
+            <input type="submit" value="Voltar"/>
+        </form>';
+    }
 }
 //---------------------------------------------//
 
