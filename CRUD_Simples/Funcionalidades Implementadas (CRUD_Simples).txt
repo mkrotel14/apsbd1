@@ -12,7 +12,7 @@ Implementado a Funcionalidade de:
 	2.a)Nome da Categoria,
 	2.b)Descrição,
 	OBS.: O Nome da categoria é um campo OBRIGATORIO e a descrição não é obrigatorio, ao tentar cadastrar sem o Nome da Categoria, deverá retornar uma mensagem de erro;
-Após clicar no botao "Cadastrar Categoria" será realizado um INSERT no banco de dados;
+3. Após clicar no botao "Cadastrar Categoria" será realizado um INSERT no banco de dados;
 4. Para realizar a busca dos dados cadastrados basta clicar no botão logo abaixo "Buscar Categorias" que sera feito um SELECT no banco para retornar os dados;
 5. Dentro dessa busca podemos Alterar algum dado ou Excluir. Para alterar basta clicar no botar "Editar" e repita o passo 2 dessa lista, porém desta vez sera realizado um UPDATE na tabela;
 6.Após alterar os dados, voltaremos para a tela de dados cadastrados (SELECT) e assim podemos Excluir algum dado selecionado clicando no botao "Excluir" realizando um DELETE na tabela;

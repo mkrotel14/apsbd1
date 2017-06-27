@@ -1,0 +1,45 @@
+Implementado a Funcionalidade de:
+
+--> Relatório de Venda de Produto por Estado;
+--> Relatório de Compra de Produtos por Funcionario;
+
+================================================================
+--- Para Formular o Relatório de Venda de Produto por Estado ---
+================================================================
+
+1.Primeiro deve navegar pela opção "Relatórios" e escolher "Relatórios de Venda por estado";
+2.Dentro do Relatório terá um campo:
+        2.a)Nome do Estado,       
+3. Após Escrever o Estado e clicar no botao "Buscar produto" será realizado um SELECT das seguintes tabelas no banco de dados:
+        ->Produto,
+        ->ProdutoVendido,
+        ->Venda,
+        ->Cliente,
+        ->Fisica,
+        ->Pessoa,
+        ->EndereçoPessoa,
+        ->Endereço,
+        ->Cidade,
+        ->Estado.
+4. O retorno sera um array contendo todos os produtos que foram vendidos para o estado escrito.
+OBS.: Para um Produto estar vendido, primeiro, deve se existir um produto e um cliente. O ID do produto e o ID da venda deve estar relacionado na tabela ProdutoVendido, por sua vez o ID de cliente deve aparecer na tabela de Venda assim fazendo com que o Produto e a Venda tenha um Cliente. O Estado desse cliente se encontra na tabela Estado que se liga através das tabelas EndereçoPessoa, Endereço, Cidade. Assim conseguimos buscar produtos Vendidos para um Cliente do Estado da sua escolha, Se ocorrer de um produto nao ser vendido ele não aparecerá no Relatório.
+
+=======================================================================
+--- Para Formular o Relatório de Compra de Produtos por Funcionario ---
+=======================================================================
+1.Primeiro deve navegar pela opção "Relatórios" e escolher "relatório de Compra por Funcionário";
+2.Dentro do Relatorio terá um campo:
+        2.a)Nome do Funcionário
+3. Após Selecionar o Funcionario e clicar no botao "Buscar Compras Realizadas" será realizado um SELECT das seguintes tabelas no banco de dados:
+        ->Pessoa,
+        ->Juridica,
+        ->Fornecedor,
+        ->Compra,
+        ->ProdutoComprado,
+        ->Produto,
+        ->Funcionario,
+        ->Fisica
+4. O retorno será um array contendo todos os produtos comprado pelo Funcionario escolhido.
+OBS.: Para um Funcionario existir, precisamos primeiro ter uma pessoa e definir ela como Física, no site ../relCompFunc.php nós ja verificamos se ess pessoa é um funcionario, então passamos esse ID para o select das Funções. Para um produto ser comprado pelo Funcionario, precisamos de, um Fornecedor, Funcionario e um Produto. O ID do Funcionario e o ID do Fornecedor e o ID do Funcionario devem estar na tabela de Compra. Para realizar a Compra do Produto precisamos de um Produto, o ID do produto e o ID da Compra entre Funcionario e Fornecedor, deve aparecer na tabela de ProdutoComprado;
+
+**** Todas as Funções de Validação do Banco de Dados, INSERT, SELECT, DELETE, UPDATE (CRUD) está dentro do arquivo inc/funcoes.php ****
