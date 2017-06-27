@@ -26,8 +26,8 @@
                     ?>
 
                     <tr>
-                        <td><?=$estado["uf"]?></td>
-                        <td><?=$estado["nomeestado"]?></td>
+                        <td><?= utf8_encode($estado["uf"]);?></td>
+                        <td><?= $estado["nomeestado"]?></td>
                         <td>
                             <form name="alterar" action="altEstado.php" method="POST">
                                 <input type="hidden" name="idestado" value="<?=$estado["idestado"]?>"/>

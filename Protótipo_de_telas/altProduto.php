@@ -14,7 +14,7 @@
             <table>
                 <tr>
                     <td>Nome do Produto:</td>
-                    <td><input type="text" name="nomeproduto" id="nomeproduto" value="<?=$produto['nomeproduto']?>" size="60" /></td>
+                    <td><input type="text" name="nomeproduto" id="nomeproduto" value="<?= utf8_encode($produto['nomeproduto']);?>" size="60" /></td>
                 </tr>
                 <tr>
                     <td>Lote:</td>
@@ -42,7 +42,7 @@
                                 $sql = "SELECT * FROM categoriaproduto ORDER BY nomecategoria";
                                 $resultado_categoria = $banco->query($sql);
                                 while($row_categorias = mysqli_fetch_assoc($resultado_categoria)){                               
-                                    echo '<option value="'.$row_categorias['idcategoriaproduto'].'">'.$row_categorias['nomecategoria'].'</option>';
+                                    echo '<option value="'.$row_categorias['idcategoriaproduto'].'">'.utf8_encode($row_categorias['nomecategoria']).'</option>';
                                 }
                             ?>
                         </select></td>                  
@@ -55,7 +55,7 @@
                                 $sql = "SELECT * FROM localproduto ORDER BY secaoproduto";
                                 $resultado_local = $banco->query($sql);
                                 while($row_local = mysqli_fetch_assoc($resultado_local)){ 
-                                    echo '<option value="'.$row_local['idlocalproduto'].'">'.$row_local['secaoproduto'].'</option>';          
+                                    echo '<option value="'.$row_local['idlocalproduto'].'">'.utf8_encode($row_local['secaoproduto']).'</option>';          
                                 }
                             ?>
                         </select></td>

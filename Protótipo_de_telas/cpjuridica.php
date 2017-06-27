@@ -48,7 +48,7 @@
                 ?>
             </select><br><br> 
             <input type="hidden" name="acao" value="inserirPJuridica"/>
-            <input type="submit" value="Cadastrar Fornecedor">
+            <input type="submit" value="Cadastrar Pessoa">
             <input type="reset" value="Limpar Dados">
         </form>
         <script src="js/campo_obrigatorio.js"></script>

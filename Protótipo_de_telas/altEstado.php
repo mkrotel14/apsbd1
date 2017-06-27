@@ -17,7 +17,7 @@
                 </tr>
                 <tr>
                     <td>Nome do Estado:</td>
-                    <td><input type="text" id="nomeestado" name="nomeestado" value="<?=$estado['nomeestado']?>" size="25" /></td>
+                    <td><input type="text" id="nomeestado" name="nomeestado" value="<?= utf8_encode($estado['nomeestado']);?>" size="25" /></td>
                 </tr>
             </table>
             <br><br>

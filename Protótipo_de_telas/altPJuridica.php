@@ -72,7 +72,7 @@
                                 $sql = "SELECT * FROM cidade ORDER BY nomecidade";
                                 $resultado_cidade = $banco->query($sql);
                                 while($row_cidades = mysqli_fetch_assoc($resultado_cidade)){ 
-                                    echo '<option value="'.$row_cidades['idcidade'].'">'.$row_cidades['nomecidade'].'</option>';
+                                    echo '<option value="'.$row_cidades['idcidade'].'">'.utf8_encode($row_cidades['nomecidade']).'</option>';
                                 }
                             ?>
                         </select></td>                  

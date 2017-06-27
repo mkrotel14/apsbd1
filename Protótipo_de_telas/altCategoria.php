@@ -14,11 +14,11 @@
             <table>
                 <tr>
                     <td>Nome da Categoria:</td>
-                    <td><input type="text" id="categoria" name="nomecategoria" size="25" value="<?=$categoria['nomecategoria']?>"/></td>
+                    <td><input type="text" id="categoria" name="nomecategoria" size="25" value="<?= utf8_encode($categoria['nomecategoria']);?>"/></td>
                 </tr>
                 <tr>
                     <td>Descrição da Categoria (máx. 200 caracteres):</td>
-                    <td><textarea cols="50" rows="4" maxlength="200" name="descricaocategoria"><?=$categoria['descricaocategoria']?></textarea></td>
+                    <td><textarea cols="50" rows="4" maxlength="200" name="descricaocategoria"><?= utf8_encode($categoria['descricaocategoria']);?></textarea></td>
                 </tr>
             </table>
             <br><br>

@@ -13,7 +13,7 @@
             <table>
                 <tr>
                     <td>Nome da Seção(Letra - Letra)ou(Numero - Numero):</td>
-                    <td><input type="text" id="secao" name="secaoproduto" size="20" value="<?=$local['secaoproduto']?>"/></td>
+                    <td><input type="text" id="secao" name="secaoproduto" size="20" value="<?= utf8_encode($local['secaoproduto']);?>"/></td>
                 </tr>
             </table>
             <br><br>

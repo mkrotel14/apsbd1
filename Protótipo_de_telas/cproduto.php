@@ -21,7 +21,7 @@
             <input type="text" name="valorcompra" id="valorcompra" size="15"/>
             Qtd. Estoque:
             <input type="text" name="qtdestoque" id="qtdestoque" size="10"/><br><br>
-            Categoria Produto:
+            Categoria do Produto:
             <select name="categoriaproduto_idcategoriaproduto" id="categoriaproduto">
                 <option value="">Selecione a Categoria</option>
                 <?php
@@ -47,5 +47,6 @@
             <input type="submit" value="Cadastrar Produto">
             <input type="reset" value="Limpar Dados">
         </form>
+        <script src="js/campo_obrigatorio.js"></script>
     </body>
 </html>
